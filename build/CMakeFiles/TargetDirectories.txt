@@ -1,2 +1,3 @@
+/Users/catkin/Study/compilers/build/CMakeFiles/test.dir
 /Users/catkin/Study/compilers/build/CMakeFiles/edit_cache.dir
 /Users/catkin/Study/compilers/build/CMakeFiles/rebuild_cache.dir
