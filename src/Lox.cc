@@ -1,4 +1,5 @@
 #include "include/Lox.h"
+#include "include/Tokentype.h"
 
 namespace lox {
 
@@ -38,5 +39,13 @@ void Lox::report(int line, std::string where, std::string message) {
 }
 
 void Lox::error(int line, std::string message) { report(line, "", message); }
+
+auto Lox::error(Token token, std::string message) -> void {
+    if (token.getType() == TokenType::EOF_TOKEN) {
+        report(token.getLine(), "at end", message);
+    } else {
+        report(token.getLine(), " at ", message);
+    }
+}
 
 } // namespace lox

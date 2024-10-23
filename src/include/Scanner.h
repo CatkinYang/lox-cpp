@@ -7,6 +7,9 @@
 #include <unordered_map>
 #include <vector>
 namespace lox {
+
+// 将输入的字符流切分成token保存到m_tokens中
+
 class Scanner {
   public:
     Scanner(std::string source) { m_source = source; }
@@ -31,11 +34,11 @@ class Scanner {
     auto identifier() -> void;
 
     auto scanToken() -> void;
-    auto scanTokens() -> std::list<std::unique_ptr<Token>>;
+    auto scanTokens() -> std::vector<std::unique_ptr<Token>>;
 
   private:
-    std::string m_source;                       // 输入流
-    std::list<std::unique_ptr<Token>> m_tokens; // 序列
+    std::string m_source;                         // 输入流
+    std::vector<std::unique_ptr<Token>> m_tokens; // 序列
     int m_start = 0;   // 指向被扫描的token中的第一个字符
     int m_current = 0; // 指向当前正在处理的字符
     int m_line = 1;    // current所在源文件的行数

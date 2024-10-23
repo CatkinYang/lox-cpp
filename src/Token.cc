@@ -8,4 +8,8 @@ auto Token::toString() -> std::string {
     std::string res = type + " " + m_lexeme + " " + literal;
     return res;
 }
+auto Token::getType() -> TokenType { return m_type; }
+auto Token::getLine() -> int { return m_line; }
+auto Token::getLiteral() -> Object { return m_literal; }
+auto Token::getLexeme() -> std::string { return m_lexeme; }
 } // namespace lox

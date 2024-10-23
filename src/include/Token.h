@@ -14,12 +14,16 @@ class Token {
         m_literal = literal;
     }
     auto toString() -> std::string;
+    auto getType() -> TokenType;
+    auto getLine() -> int;
+    auto getLiteral() -> Object;
+    auto getLexeme() -> std::string;
 
   private:
     TokenType m_type;     // token 种类
     std::string m_lexeme; // 词素
-    Object m_literal;
-    int m_line; // 行号
+    Object m_literal;     // 子面量
+    int m_line;           // 行号
 };
 
 } // namespace lox

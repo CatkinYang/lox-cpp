@@ -3,6 +3,7 @@
 #include "include/Token.h"
 #include "include/Tokentype.h"
 #include <cctype>
+#include <string>
 namespace lox {
 
 static Lox lox;
@@ -14,6 +15,7 @@ auto Scanner::advance() -> char {
     return m_source[m_current - 1];
 }
 
+// TODO: 根据type生成对应的token对象加入m_tokens中
 auto Scanner::addToken(TokenType type) -> void {
     Object literal;
     addToken(type, literal);
@@ -57,7 +59,8 @@ auto Scanner::get_string() -> void {
     }
     advance();
     auto value = m_source.substr(m_start + 1, m_current - 1);
-    // addToken(STRING, value);
+    auto literal = Object::make_str_obj(value);
+    addToken(STRING, literal);
 }
 
 auto Scanner::get_number() -> void {
@@ -70,7 +73,9 @@ auto Scanner::get_number() -> void {
         while (isdigit(peek()))
             advance();
     }
-    //   addToken(NUMBER, std::stod(m_source.substr(m_start, m_current)));
+    auto literal =
+        Object::make_num_obj(std::stod(m_source.substr(m_start, m_current)));
+    addToken(NUMBER, literal);
 }
 
 auto Scanner::identifier() -> void {
@@ -164,10 +169,10 @@ auto Scanner::scanToken() -> void {
     }
 }
 
-auto Scanner::scanTokens() -> std::list<std::unique_ptr<Token>> {
+auto Scanner::scanTokens() -> std::vector<std::unique_ptr<Token>> {
     while (!isAtEnd()) {
         m_start = m_current;
-        //   scanToken();
+        scanToken();
     }
     Object literal = lox::Object::make_nil_obj();
     m_tokens.push_back(std::make_unique<Token>(lox::TokenType::EOF_TOKEN, "",
