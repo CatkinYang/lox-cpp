@@ -1,6 +1,12 @@
 #include "include/Lox.h"
 #include "include/Tokentype.h"
 
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <memory>
+#include <sstream>
+#include <stdexcept>
 namespace lox {
 
 void Lox::run(const std::string &content) { std::stringstream input(content); }
@@ -40,11 +46,11 @@ void Lox::report(int line, std::string where, std::string message) {
 
 void Lox::error(int line, std::string message) { report(line, "", message); }
 
-auto Lox::error(Token token, std::string message) -> void {
-    if (token.getType() == TokenType::EOF_TOKEN) {
-        report(token.getLine(), "at end", message);
+auto Lox::error(TokenRef token, std::string message) -> void {
+    if (token->getType() == TokenType::EOF_TOKEN) {
+        report(token->getLine(), "at end", message);
     } else {
-        report(token.getLine(), " at ", message);
+        report(token->getLine(), " at ", message);
     }
 }
 

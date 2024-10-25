@@ -4,6 +4,7 @@ set(BUILD_SHARED_LIBS OFF) # We expect external libraries to be linked
                            # statically.
 set(CMAKE_CXX_STANDARD 17) # Compile as C++17.
 set(CMAKE_CXX_STANDARD_REQUIRED ON) # Require C++17 support.
+# ##############################################################################
 
 set(PROJECT_NAME "lox-cpp")
 project(${PROJECT_NAME})
@@ -12,11 +13,6 @@ message(STATUS "PROJECT_NAME: " ${PROJECT_NAME})
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message(STATUS "Setting build type to `Debug` as none was specified.")
   set(CMAKE_BUILD_TYPE "Debug")
-endif()
-
-if(EMSCRIPTEN)
-  add_compile_options(-fexceptions)
-  add_link_options(-fexceptions)
 endif()
 
 # People keep running CMake in the wrong folder, completely nuking their project
@@ -69,63 +65,6 @@ endif()
 # CTest
 enable_testing()
 
-# clang-format attempt to find the binary if user did not specify
-find_program(
-  CLANG_FORMAT_BIN
-  NAMES clang-format clang-format-14
-  HINTS ${LOX_CLANG_SEARCH_PATH})
-
-if("${CLANG_FORMAT_BIN}" STREQUAL "CLANG_FORMAT_BIN-NOTFOUND")
-  message(WARNING "lox-cpp/main couldn't find clang-format.")
-else()
-  message(STATUS "lox-cpp/main found clang-format at ${CLANG_FORMAT_BIN}")
-endif()
-
-# attempt to find the binary if user did not specify
-find_program(
-  CLANG_TIDY_BIN
-  NAMES clang-tidy clang-tidy-14
-  HINTS ${LOX_CLANG_SEARCH_PATH})
-
-if("${CLANG_TIDY_BIN}" STREQUAL "CLANG_TIDY_BIN-NOTFOUND")
-  message(WARNING "lox-cpp/main couldn't find clang-tidy.")
-else()
-  # Output compile_commands.json
-  set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-  message(STATUS "lox-cpp/main found clang-tidy at ${CLANG_TIDY_BIN}")
-endif()
-
-find_program(
-  CLANG_APPLY_REPLACEMENTS_BIN
-  NAMES clang-apply-replacements clang-apply-replacements-14
-  HINTS ${LOX_CLANG_SEARCH_PATH})
-
-if("${CLANG_APPLY_REPLACEMENTS_BIN}" STREQUAL
-   "CLANG_APPLY_REPLACEMENTS_BIN-NOTFOUND")
-  message(WARNING "lox-cpp/main couldn't find clang-apply-replacements.")
-else()
-  # Output compile_commands.json
-  set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-  message(
-    STATUS
-      "lox-cpp/main found clang-apply-replacements at ${CLANG_APPLY_REPLACEMENTS_BIN}"
-  )
-endif()
-
-# cpplint
-find_program(
-  CPPLINT_BIN
-  NAMES cpplint cpplint.py
-  HINTS "${LOX_BUILD_SUPPORT_DIR}")
-
-if("${CPPLINT_BIN}" STREQUAL "CPPLINT_BIN-NOTFOUND")
-  message(WARNING "lox-cpp/main couldn't find cpplint.")
-else()
-  message(STATUS "lox-cpp/main found cpplint at ${CPPLINT_BIN}")
-endif()
-
-# ##############################################################################
-
 # ##############################################################################
 
 # ##############################################################################
@@ -161,13 +100,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Includes.
 set(LOX_SRC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/src/include)
 set(LOX_TEST_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/test/include)
-set(LOX_THIRD_PARTY_INCLUDE_DIR
-    ${PROJECT_SOURCE_DIR}/third_party
-    ${PROJECT_SOURCE_DIR}/third_party/fmt/include
-    ${PROJECT_SOURCE_DIR}/third_party/libpg_query/include
-    ${PROJECT_SOURCE_DIR}/third_party/argparse/include
-    ${PROJECT_SOURCE_DIR}/third_party/cpp_random_distributions
-    ${PROJECT_SOURCE_DIR}/third_party/backward-cpp)
+set(LOX_THIRD_PARTY_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/third_party)
 
 include_directories(${LOX_SRC_INCLUDE_DIR} ${LOX_TEST_INCLUDE_DIR}
                     ${LOX_THIRD_PARTY_INCLUDE_DIR})
@@ -177,27 +110,18 @@ function(disable_target_warnings NAME)
   target_compile_options(${NAME} PRIVATE "-w")
 endfunction()
 
+add_library(
+  lox STATIC
+  ${PROJECT_SOURCE_DIR}/src/Lox.cc ${PROJECT_SOURCE_DIR}/src/Token.cc
+  ${PROJECT_SOURCE_DIR}/src/TokenType.cc ${PROJECT_SOURCE_DIR}/src/Scanner.cc
+  ${PROJECT_SOURCE_DIR}/src/Object.cc)
+
 # Other CMake modules MUST BE ADDED AFTER CONFIGURING COMPILER PARAMETERS
 # ##############################################################################
 set(CMAKE_MODULE_PATH "${LOX_BUILD_SUPPORT_DIR}/cmake;${CMAKE_MODULE_PATH}")
 find_package(LibElf)
 find_package(LibDwarf)
 
-# add_subdirectory(third_party) add_subdirectory(src) add_subdirectory(test)
-# add_subdirectory(tools)
-
-# ##############################################################################
-# MAKE TARGETS
-# ##############################################################################
-
-# ##############################################################################
-# "make format" "make check-format"
-# ##############################################################################
-# string(CONCAT LOX_FORMAT_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/src,"
-# "${CMAKE_CURRENT_SOURCE_DIR}/test," )
-
-# # ######################################### # "make check-lint" #
-# ######################################### file(GLOB_RECURSE LOX_LINT_FILES
-# "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
-# "${CMAKE_CURRENT_SOURCE_DIR}/test/*.h"
-# "${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp" )
+add_subdirectory(third_party)
+add_subdirectory(src)
+add_subdirectory(test)

@@ -1,11 +1,5 @@
 #pragma once
 #include "Token.h"
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-#include <list>
-#include <sstream>
-#include <stdexcept>
 #include <string>
 
 namespace lox {
@@ -17,7 +11,7 @@ class Lox {
     void runPrompt();
     void report(int line, std::string where, std::string message);
     void error(int line, std::string message);
-    auto error(Token token, std::string message) -> void;
+    auto error(TokenRef token, std::string message) -> void;
 
   private:
     bool hasError = false;
