@@ -112,9 +112,13 @@ endfunction()
 
 add_library(
   lox STATIC
-  ${PROJECT_SOURCE_DIR}/src/Lox.cc ${PROJECT_SOURCE_DIR}/src/Token.cc
-  ${PROJECT_SOURCE_DIR}/src/TokenType.cc ${PROJECT_SOURCE_DIR}/src/Scanner.cc
-  ${PROJECT_SOURCE_DIR}/src/Object.cc)
+  ${PROJECT_SOURCE_DIR}/src/Lox.cc
+  ${PROJECT_SOURCE_DIR}/src/Token.cc
+  ${PROJECT_SOURCE_DIR}/src/TokenType.cc
+  ${PROJECT_SOURCE_DIR}/src/Scanner.cc
+  ${PROJECT_SOURCE_DIR}/src/Object.cc
+  ${PROJECT_SOURCE_DIR}/src/AstPrinter.cc
+  ${PROJECT_SOURCE_DIR}/src/Expression.cc)
 
 # Other CMake modules MUST BE ADDED AFTER CONFIGURING COMPILER PARAMETERS
 # ##############################################################################

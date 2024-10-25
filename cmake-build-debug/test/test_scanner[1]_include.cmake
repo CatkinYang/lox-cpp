@@ -1,0 +1,5 @@
+if(EXISTS "/Users/catkin/Study/compilers/cmake-build-debug/test/test_scanner[1]_tests.cmake")
+  include("/Users/catkin/Study/compilers/cmake-build-debug/test/test_scanner[1]_tests.cmake")
+else()
+  add_test(test_scanner_NOT_BUILT test_scanner_NOT_BUILT)
+endif()

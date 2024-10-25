@@ -1,0 +1,35 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/catkin/Study/compilers -B /Users/catkin/Study/compilers/cmake-build-debug
+-- The C compiler identification is AppleClang 16.0.0.16000026
+-- The CXX compiler identification is AppleClang 16.0.0.16000026
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- PROJECT_NAME: lox-cpp
+-- You're using AppleClang 16.0.0.16000026
+Build mode: Debug
+address sanitizer will be enabled in debug mode.
+-- CMAKE_CXX_FLAGS: 
+-- CMAKE_CXX_FLAGS_DEBUG: -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize= -fno-omit-frame-pointer -fno-optimize-sibling-calls
+-- CMAKE_EXE_LINKER_FLAGS: 
+-- CMAKE_SHARED_LINKER_FLAGS: 
+-- Found PkgConfig: /opt/homebrew/bin/pkg-config (found version "0.29.2") 
+-- Found LibElf: /opt/homebrew/lib/libelf.a  
+-- Performing Test ELF_GETSHDRSTRNDX
+-- Performing Test ELF_GETSHDRSTRNDX - Failed
+-- Could NOT find LibDwarf (missing: LIBDWARF_LIBRARIES LIBDWARF_INCLUDE_DIRS) 
+-- libdwarf uses char* type
+-- libdwarf does not have dwarf_producer_init_c, using dwarf_producer_init
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- LOX_TEST_SOURCES: /Users/catkin/Study/compilers/test/test_astprinter.cc;/Users/catkin/Study/compilers/test/test_scanner.cc
+-- Configuring done (1.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/catkin/Study/compilers/cmake-build-debug

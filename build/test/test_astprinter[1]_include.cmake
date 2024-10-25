@@ -1,0 +1,5 @@
+if(EXISTS "/Users/catkin/Study/compilers/build/test/test_astprinter[1]_tests.cmake")
+  include("/Users/catkin/Study/compilers/build/test/test_astprinter[1]_tests.cmake")
+else()
+  add_test(test_astprinter_NOT_BUILT test_astprinter_NOT_BUILT)
+endif()

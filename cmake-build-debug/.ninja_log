@@ -1,0 +1,15 @@
+# ninja log v5
+3	528	1729873124781741032	CMakeFiles/lox.dir/src/Object.cc.o	9db92bf9589285
+2	640	1729873124898887319	CMakeFiles/lox.dir/src/Token.cc.o	351a976cc2cd56e3
+2	640	1729873124900360685	CMakeFiles/lox.dir/src/TokenType.cc.o	a8e2bf2890e25fa9
+3	693	1729873124949665593	CMakeFiles/lox.dir/src/AstPrinter.cc.o	52a8221a79ca05ff
+3	829	1729873125088080708	CMakeFiles/lox.dir/src/Scanner.cc.o	95f41338dc218641
+1	888	1729873125147396181	CMakeFiles/lox.dir/src/Lox.cc.o	ea89f7697c235c2d
+530	944	1729873125207053109	CMakeFiles/lox.dir/src/Expression.cc.o	f79e1eed155d9fa0
+944	995	1729873125263624000	lib/liblox.a	95c4bd660540b709
+641	1391	1729873125654656260	test/CMakeFiles/test_astprinter.dir/test_astprinter.cc.o	9b423648430c2b7f
+640	2320	1729873126576859854	third_party/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	271a6de6679a20f2
+2321	2365	1729873126634161000	lib/libgtest.a	4b6ae67df92f76db
+2365	2804	1729873127073031417	test/test_astprinter	c4213b2d28ea1507
+2365	2804	1729873127073031417	test/test_astprinter[1]_tests.cmake	c4213b2d28ea1507
+2365	2804	1729873127073031417	/Users/catkin/Study/compilers/cmake-build-debug/test/test_astprinter[1]_tests.cmake	c4213b2d28ea1507

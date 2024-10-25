@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Expression.h"
+#include "Object.h"
 #include "Token.h"
 #include "Tokentype.h"
 #include <future>
@@ -21,20 +22,20 @@ class Parser {
     Parser(std::vector<std::shared_ptr<Token>> tokens) {
         m_tokens = std::move(tokens);
     }
-    auto parse() -> AbstractExpressionRef;
+    auto parse() -> AbstractExpressionRef<Object>;
 
     // 顶级表达式，可以匹配任何优先级的表达式
-    auto expression() -> AbstractExpressionRef;
+    auto expression() -> AbstractExpressionRef<Object>;
     // 等于 == !=
-    auto equality() -> AbstractExpressionRef;
+    auto equality() -> AbstractExpressionRef<Object>;
     // 比较 > >= < <=
-    auto comparison() -> AbstractExpressionRef;
+    auto comparison() -> AbstractExpressionRef<Object>;
     // 加减 + -
-    auto term() -> AbstractExpressionRef;
-    auto factor() -> AbstractExpressionRef; // 乘除 * /
-    auto unary() -> AbstractExpressionRef;  // 一元运算符 ！-
+    auto term() -> AbstractExpressionRef<Object>;
+    auto factor() -> AbstractExpressionRef<Object>; // 乘除 * /
+    auto unary() -> AbstractExpressionRef<Object>;  // 一元运算符 ！-
     // 基本表达式
-    auto primary() -> AbstractExpressionRef;
+    auto primary() -> AbstractExpressionRef<Object>;
 
     // 检查当前current指向的token的type是否和传入的type相等
     auto check(TokenType type) -> bool;

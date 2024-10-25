@@ -1,12 +1,11 @@
-
-#include "../src/include/Scanner.h"
+#include "Scanner.h"
 #include "gtest/gtest.h"
 #include <ostream>
 
 namespace lox {
 
 TEST(ScannerTest, BasicTest1) {
-    std::string source = "123 123";
+    std::string source = "var a = 123;";
     auto scan = new Scanner(source);
     scan->scanTokens();
     auto token_vec = scan->getTokens();

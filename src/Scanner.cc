@@ -27,7 +27,7 @@ auto Scanner::addToken(TokenType type) -> void {
 }
 
 auto Scanner::addToken(TokenType type, ObjectRef literal) -> void {
-    std::string lexeme = m_source.substr(m_start, m_current);
+    std::string lexeme = m_source.substr(m_start, m_current - m_start);
     m_tokens.push_back(std::make_shared<Token>(type, lexeme, literal, m_line));
 }
 
@@ -65,7 +65,7 @@ auto Scanner::get_string() -> void {
     }
     advance();
     // 获取字面量的具体值并且构建string_obj
-    auto value = m_source.substr(m_start + 1, m_current - 1);
+    auto value = m_source.substr(m_start + 1, m_current - m_start - 2);
     auto literal = std::make_shared<Object>(Object::make_str_obj(value));
 
     addToken(STRING, literal);
@@ -82,8 +82,8 @@ auto Scanner::get_number() -> void {
             advance();
     }
 
-    auto literal_obj =
-        Object::make_num_obj(std::stod(m_source.substr(m_start, m_current)));
+    auto literal_obj = Object::make_num_obj(
+        std::stod(m_source.substr(m_start, m_current - m_start)));
     auto literal = std::make_shared<Object>(literal_obj);
     addToken(NUMBER, literal);
 }
@@ -92,7 +92,7 @@ auto Scanner::identifier() -> void {
     while (std::isalpha(peek()) || std::isdigit(peek())) {
         advance();
     }
-    auto text = m_source.substr(m_start, m_current);
+    auto text = m_source.substr(m_start, m_current - m_start);
     TokenType type;
     if (lox::stringToTokenType.find(text) == lox::stringToTokenType.end()) {
         type = IDENTIFIER;

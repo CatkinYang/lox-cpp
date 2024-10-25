@@ -10,106 +10,111 @@ namespace lox {
 
 static Lox lox;
 
-auto Parser::parse() -> AbstractExpressionRef {
+auto Parser::parse() -> AbstractExpressionRef<Object> {
     try {
         return expression();
     } catch (ParserError error) {
     }
 }
 
-auto Parser::expression() -> AbstractExpressionRef { return equality(); }
+auto Parser::expression() -> AbstractExpressionRef<Object> {
+    return equality();
+}
 
-auto Parser::equality() -> AbstractExpressionRef {
+auto Parser::equality() -> AbstractExpressionRef<Object> {
     auto expr = comparison();
     while (match(BANG_EQUAL, EQUAL_EQUAL)) {
         auto opt = previous();
         auto right = comparison();
-        expr = std::static_pointer_cast<AbstractExpression>(
-            std::make_shared<BinaryExpression>(expr, right, opt));
+        expr = std::static_pointer_cast<AbstractExpression<Object>>(
+            std::make_shared<BinaryExpression<Object>>(expr, right, opt));
     }
     return expr;
 }
 
-auto Parser::comparison() -> AbstractExpressionRef {
+auto Parser::comparison() -> AbstractExpressionRef<Object> {
     auto expr = term();
     while (match(GREATER, GREATER_EQUAL, LESS, LESS_EQUAL)) {
         auto opt = previous();
         auto right = term();
-        expr = std::static_pointer_cast<AbstractExpression>(
-            std::make_shared<BinaryExpression>(expr, right, opt));
+        expr = std::static_pointer_cast<AbstractExpression<Object>>(
+            std::make_shared<BinaryExpression<Object>>(expr, right, opt));
     }
     return expr;
 }
 
-auto Parser::term() -> AbstractExpressionRef {
+auto Parser::term() -> AbstractExpressionRef<Object> {
     auto expr = factor();
     while (match(MINUS, PLUS)) {
         auto opt = previous();
         auto right = factor();
-        expr = std::static_pointer_cast<AbstractExpression>(
-            std::make_shared<BinaryExpression>(expr, right, opt));
+        expr = std::static_pointer_cast<AbstractExpression<Object>>(
+            std::make_shared<BinaryExpression<Object>>(expr, right, opt));
     }
     return expr;
 }
 
-auto Parser::factor() -> AbstractExpressionRef {
+auto Parser::factor() -> AbstractExpressionRef<Object> {
     auto expr = unary();
     while (match(SLASH, STAR)) {
         auto opt = previous();
         auto right = unary();
-        expr = std::static_pointer_cast<AbstractExpression>(
-            std::make_shared<BinaryExpression>(expr, right, opt));
+        expr = std::static_pointer_cast<AbstractExpression<Object>>(
+            std::make_shared<BinaryExpression<Object>>(expr, right, opt));
     }
     return expr;
 }
 
-auto Parser::unary() -> AbstractExpressionRef {
+auto Parser::unary() -> AbstractExpressionRef<Object> {
     if (match(BANG, MINUS)) {
         auto opt = previous();
         auto right = unary();
-        return std::static_pointer_cast<AbstractExpression>(
-            std::make_shared<UnaryExpression>(right, opt));
+        return std::static_pointer_cast<AbstractExpression<Object>>(
+            std::make_shared<UnaryExpression<Object>>(right, opt));
     }
     return primary();
 }
 
-auto Parser::primary() -> AbstractExpressionRef {
+auto Parser::primary() -> AbstractExpressionRef<Object> {
     if (match(FALSE)) {
         auto false_literal_obj = Object::make_bool_obj(false);
         auto literal_expr =
-            std::make_shared<LiteralExpression>(false_literal_obj);
-        auto res = std::static_pointer_cast<AbstractExpression>(literal_expr);
+            std::make_shared<LiteralExpression<Object>>(false_literal_obj);
+        auto res =
+            std::static_pointer_cast<AbstractExpression<Object>>(literal_expr);
         return res;
     }
     if (match(TRUE)) {
         auto true_literal_obj = Object::make_bool_obj(true);
         auto literal_expr =
-            std::make_shared<LiteralExpression>(true_literal_obj);
-        auto res = std::static_pointer_cast<AbstractExpression>(literal_expr);
+            std::make_shared<LiteralExpression<Object>>(true_literal_obj);
+        auto res =
+            std::static_pointer_cast<AbstractExpression<Object>>(literal_expr);
         return res;
     }
 
     if (match(NIL)) {
         auto nil_literal_obj = Object::make_nil_obj();
         auto literal_expr =
-            std::make_shared<LiteralExpression>(nil_literal_obj);
-        auto res = std::static_pointer_cast<AbstractExpression>(literal_expr);
+            std::make_shared<LiteralExpression<Object>>(nil_literal_obj);
+        auto res =
+            std::static_pointer_cast<AbstractExpression<Object>>(literal_expr);
         return res;
     }
 
     if (match(NUMBER, STRING)) {
         auto pre_literal_obj = previous()->getLiteral();
         auto pre_literal_expr =
-            std::make_shared<LiteralExpression>(pre_literal_obj);
-        auto res =
-            std::static_pointer_cast<AbstractExpression>(pre_literal_expr);
+            std::make_shared<LiteralExpression<Object>>(pre_literal_obj);
+        auto res = std::static_pointer_cast<AbstractExpression<Object>>(
+            pre_literal_expr);
         return res;
     }
 
     if (match(LEFT_PAREN)) {
         auto expr = expression();
         consume(RIGHT_PAREN, "Expect ')' after expression.");
-        return new Expr.Grouping(expr);
+        auto res = std::make_shared<GroupingExpression<Object>>(expr);
     }
     throw error(peek(), "Expect expression.");
 }
