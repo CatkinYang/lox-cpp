@@ -1,4 +1,5 @@
 CMakeFiles/lox.dir/src/Token.cc.o: \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/share/asan_ignorelist.txt \
   /Users/catkin/Study/compilers/src/Token.cc \
   /Users/catkin/Study/compilers/src/include/Token.h \
   /Users/catkin/Study/compilers/src/include/Object.h \

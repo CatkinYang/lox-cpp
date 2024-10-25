@@ -102,6 +102,7 @@ src/clean:
 
 # Recursive "all" directory target.
 test/all: test/CMakeFiles/test_astprinter.dir/all
+test/all: test/CMakeFiles/test_leaks.dir/all
 test/all: test/CMakeFiles/test_scanner.dir/all
 .PHONY : test/all
 
@@ -112,6 +113,7 @@ test/preinstall:
 # Recursive "clean" directory target.
 test/clean: test/CMakeFiles/build-tests.dir/clean
 test/clean: test/CMakeFiles/test_astprinter.dir/clean
+test/clean: test/CMakeFiles/test_leaks.dir/clean
 test/clean: test/CMakeFiles/test_scanner.dir/clean
 .PHONY : test/clean
 
@@ -317,6 +319,7 @@ third_party/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 
 # All Build rule for target.
 test/CMakeFiles/build-tests.dir/all: test/CMakeFiles/test_astprinter.dir/all
+test/CMakeFiles/build-tests.dir/all: test/CMakeFiles/test_leaks.dir/all
 test/CMakeFiles/build-tests.dir/all: test/CMakeFiles/test_scanner.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/build-tests.dir/build.make test/CMakeFiles/build-tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/build-tests.dir/build.make test/CMakeFiles/build-tests.dir/build
@@ -325,7 +328,7 @@ test/CMakeFiles/build-tests.dir/all: test/CMakeFiles/test_scanner.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/build-tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/catkin/Study/compilers/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/catkin/Study/compilers/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/build-tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/catkin/Study/compilers/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/build-tests.dir/rule
@@ -367,6 +370,33 @@ test/CMakeFiles/test_astprinter.dir/clean:
 .PHONY : test/CMakeFiles/test_astprinter.dir/clean
 
 #=============================================================================
+# Target rules for target test/CMakeFiles/test_leaks.dir
+
+# All Build rule for target.
+test/CMakeFiles/test_leaks.dir/all: CMakeFiles/lox.dir/all
+test/CMakeFiles/test_leaks.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=19,20 "Built target test_leaks"
+.PHONY : test/CMakeFiles/test_leaks.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/test_leaks.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/catkin/Study/compilers/build/CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_leaks.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/catkin/Study/compilers/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/test_leaks.dir/rule
+
+# Convenience name for target.
+test_leaks: test/CMakeFiles/test_leaks.dir/rule
+.PHONY : test_leaks
+
+# clean rule for target.
+test/CMakeFiles/test_leaks.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/clean
+.PHONY : test/CMakeFiles/test_leaks.dir/clean
+
+#=============================================================================
 # Target rules for target test/CMakeFiles/test_scanner.dir
 
 # All Build rule for target.
@@ -374,7 +404,7 @@ test/CMakeFiles/test_scanner.dir/all: CMakeFiles/lox.dir/all
 test/CMakeFiles/test_scanner.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_scanner.dir/build.make test/CMakeFiles/test_scanner.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_scanner.dir/build.make test/CMakeFiles/test_scanner.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=19,20 "Built target test_scanner"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=21,22 "Built target test_scanner"
 .PHONY : test/CMakeFiles/test_scanner.dir/all
 
 # Build rule for subdir invocation for target.

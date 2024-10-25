@@ -1,4 +1,5 @@
 CMakeFiles/lox.dir/src/Scanner.cc.o: \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/share/asan_ignorelist.txt \
   /Users/catkin/Study/compilers/src/Scanner.cc \
   /Users/catkin/Study/compilers/src/include/Scanner.h \
   /Users/catkin/Study/compilers/src/include/Token.h \

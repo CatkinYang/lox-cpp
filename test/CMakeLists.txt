@@ -41,6 +41,4 @@ foreach(lox_test_source ${LOX_TEST_SOURCES})
                COMMAND ${lox_test_name})
 endforeach()
 
-# add_custom_target(test_scanner COMMAND ${CMAKE_BINARY_DIR}/test/test_scanner)
-
 # 添加一个自定义目标，用于运行所有测试 add_custom_target(check-tests)

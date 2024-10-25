@@ -1,4 +1,5 @@
 CMakeFiles/lox.dir/src/Object.cc.o: \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/share/asan_ignorelist.txt \
   /Users/catkin/Study/compilers/src/Object.cc \
   /Users/catkin/Study/compilers/src/include/Object.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/string \

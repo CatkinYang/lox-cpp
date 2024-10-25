@@ -83,7 +83,7 @@ set(CMAKE_CXX_FLAGS_DEBUG
     "${CMAKE_CXX_FLAGS_DEBUG} -Wno-unused-parameter -Wno-attributes") # TODO:
                                                                       # remove
 set(CMAKE_CXX_FLAGS_DEBUG
-    "${CMAKE_CXX_FLAGS_DEBUG} -O0 -ggdb -fsanitize=${lox_SANITIZER} -fno-omit-frame-pointer -fno-optimize-sibling-calls"
+    "${CMAKE_CXX_FLAGS_DEBUG} -O0 -ggdb -fsanitize=${LOX_SANITIZER} -fno-omit-frame-pointer -fno-optimize-sibling-calls"
 )
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 

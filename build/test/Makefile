@@ -200,6 +200,20 @@ test_astprinter/fast:
 .PHONY : test_astprinter/fast
 
 # Convenience name for target.
+test/CMakeFiles/test_leaks.dir/rule:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_leaks.dir/rule
+.PHONY : test/CMakeFiles/test_leaks.dir/rule
+
+# Convenience name for target.
+test_leaks: test/CMakeFiles/test_leaks.dir/rule
+.PHONY : test_leaks
+
+# fast build rule for target.
+test_leaks/fast:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/build
+.PHONY : test_leaks/fast
+
+# Convenience name for target.
 test/CMakeFiles/test_scanner.dir/rule:
 	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_scanner.dir/rule
 .PHONY : test/CMakeFiles/test_scanner.dir/rule
@@ -236,6 +250,30 @@ test_astprinter.s: test_astprinter.cc.s
 test_astprinter.cc.s:
 	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_astprinter.dir/build.make test/CMakeFiles/test_astprinter.dir/test_astprinter.cc.s
 .PHONY : test_astprinter.cc.s
+
+test_leaks.o: test_leaks.cc.o
+.PHONY : test_leaks.o
+
+# target to build an object file
+test_leaks.cc.o:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/test_leaks.cc.o
+.PHONY : test_leaks.cc.o
+
+test_leaks.i: test_leaks.cc.i
+.PHONY : test_leaks.i
+
+# target to preprocess a source file
+test_leaks.cc.i:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/test_leaks.cc.i
+.PHONY : test_leaks.cc.i
+
+test_leaks.s: test_leaks.cc.s
+.PHONY : test_leaks.s
+
+# target to generate assembly for a file
+test_leaks.cc.s:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/test_leaks.cc.s
+.PHONY : test_leaks.cc.s
 
 test_scanner.o: test_scanner.cc.o
 .PHONY : test_scanner.o
@@ -276,10 +314,14 @@ help:
 	@echo "... test"
 	@echo "... build-tests"
 	@echo "... test_astprinter"
+	@echo "... test_leaks"
 	@echo "... test_scanner"
 	@echo "... test_astprinter.o"
 	@echo "... test_astprinter.i"
 	@echo "... test_astprinter.s"
+	@echo "... test_leaks.o"
+	@echo "... test_leaks.i"
+	@echo "... test_leaks.s"
 	@echo "... test_scanner.o"
 	@echo "... test_scanner.i"
 	@echo "... test_scanner.s"

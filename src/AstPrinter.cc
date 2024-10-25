@@ -37,6 +37,7 @@ std::string AstPrinter::visitUnaryExpr(UnaryExpressionRef<std::string> expr) {
     auto right = expr->getRightExpr()->accept(
         std::static_pointer_cast<Visitor<std::string>>(shared_from_this()));
     res += right;
+    res += ")";
     return res;
 }
 
@@ -46,6 +47,7 @@ AstPrinter::visitGroupingExpr(GroupingExpressionRef<std::string> expr) {
     auto exp = expr->getExpr()->accept(
         std::static_pointer_cast<Visitor<std::string>>(shared_from_this()));
     res += exp;
+    res += ")";
     return res;
 }
 

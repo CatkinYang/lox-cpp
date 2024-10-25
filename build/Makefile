@@ -263,6 +263,19 @@ test_astprinter/fast:
 .PHONY : test_astprinter/fast
 
 #=============================================================================
+# Target rules for targets named test_leaks
+
+# Build rule for target.
+test_leaks: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_leaks
+.PHONY : test_leaks
+
+# fast build rule for target.
+test_leaks/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/build
+.PHONY : test_leaks/fast
+
+#=============================================================================
 # Target rules for targets named test_scanner
 
 # Build rule for target.
@@ -463,6 +476,7 @@ help:
 	@echo "... gtest_main"
 	@echo "... lox"
 	@echo "... test_astprinter"
+	@echo "... test_leaks"
 	@echo "... test_scanner"
 	@echo "... src/AstPrinter.o"
 	@echo "... src/AstPrinter.i"

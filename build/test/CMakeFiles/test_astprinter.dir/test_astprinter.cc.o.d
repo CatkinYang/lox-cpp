@@ -1,4 +1,5 @@
 test/CMakeFiles/test_astprinter.dir/test_astprinter.cc.o: \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/share/asan_ignorelist.txt \
   /Users/catkin/Study/compilers/test/test_astprinter.cc \
   /Users/catkin/Study/compilers/src/include/AstPrinter.h \
   /Users/catkin/Study/compilers/src/include/Expression.h \

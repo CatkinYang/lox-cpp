@@ -1,4 +1,5 @@
 CMakeFiles/lox.dir/src/TokenType.cc.o: \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/share/asan_ignorelist.txt \
   /Users/catkin/Study/compilers/src/TokenType.cc \
   /Users/catkin/Study/compilers/src/include/Tokentype.h \
   /Users/catkin/Study/compilers/src/include/tools/enum2string.h \

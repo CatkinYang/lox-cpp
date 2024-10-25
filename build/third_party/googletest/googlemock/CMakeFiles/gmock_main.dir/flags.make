@@ -6,7 +6,7 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -isystem /Users/catkin/Study/compilers/src -isystem /Users/catkin/Study/compilers/src/include -isystem /Users/catkin/Study/compilers/test/include -isystem /Users/catkin/Study/compilers/third_party -isystem /Users/catkin/Study/compilers/third_party/googletest/googlemock/include -isystem /Users/catkin/Study/compilers/third_party/googletest/googlemock -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest/include -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest
 
-CXX_FLAGSarm64 = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize= -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=c++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC  -DGTEST_HAS_PTHREAD=1  
+CXX_FLAGSarm64 = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=c++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC  -DGTEST_HAS_PTHREAD=1  
 
-CXX_FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize= -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=c++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC  -DGTEST_HAS_PTHREAD=1  
+CXX_FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=c++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC  -DGTEST_HAS_PTHREAD=1  
 
