@@ -10,7 +10,7 @@ address sanitizer will be enabled in debug mode.
 -- Could NOT find LibDwarf (missing: LIBDWARF_LIBRARIES LIBDWARF_INCLUDE_DIRS) 
 -- libdwarf uses char* type
 -- libdwarf does not have dwarf_producer_init_c, using dwarf_producer_init
--- LOX_TEST_SOURCES: /Users/catkin/Study/compilers/test/test_astprinter.cc;/Users/catkin/Study/compilers/test/test_scanner.cc
+-- LOX_TEST_SOURCES: /Users/catkin/Study/compilers/test/test_astprinter.cc;/Users/catkin/Study/compilers/test/test_leaks.cc;/Users/catkin/Study/compilers/test/test_parser.cc;/Users/catkin/Study/compilers/test/test_scanner.cc
 -- Configuring done (0.5s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/catkin/Study/compilers/cmake-build-debug

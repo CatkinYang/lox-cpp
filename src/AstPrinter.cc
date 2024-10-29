@@ -51,4 +51,13 @@ AstPrinter::visitGroupingExpr(GroupingExpressionRef<std::string> expr) {
     return res;
 }
 
+std::string
+AstPrinter::visitVariableExpr(VariableExpressionRef<std::string> expr) {
+    return "";
+}
+std::string
+AstPrinter::visitAssignmentExpr(AssignmentExpressionRef<std::string> expr) {
+    return "";
+}
+
 } // namespace lox

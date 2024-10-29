@@ -98,6 +98,27 @@ build CMakeFiles/lox.dir/src/Expression.cc.o: CXX_COMPILER__lox_unscanned_Debug 
   OBJECT_DIR = CMakeFiles/lox.dir
   OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
 
+build CMakeFiles/lox.dir/src/Parser.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Parser.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Parser.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/RuntimeError.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/RuntimeError.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/RuntimeError.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Statements.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Statements.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Statements.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target lox
@@ -106,7 +127,7 @@ build CMakeFiles/lox.dir/src/Expression.cc.o: CXX_COMPILER__lox_unscanned_Debug 
 #############################################
 # Link the static library lib/liblox.a
 
-build lib/liblox.a: CXX_STATIC_LIBRARY_LINKER__lox_Debug CMakeFiles/lox.dir/src/Lox.cc.o CMakeFiles/lox.dir/src/Token.cc.o CMakeFiles/lox.dir/src/TokenType.cc.o CMakeFiles/lox.dir/src/Scanner.cc.o CMakeFiles/lox.dir/src/Object.cc.o CMakeFiles/lox.dir/src/AstPrinter.cc.o CMakeFiles/lox.dir/src/Expression.cc.o
+build lib/liblox.a: CXX_STATIC_LIBRARY_LINKER__lox_Debug CMakeFiles/lox.dir/src/Lox.cc.o CMakeFiles/lox.dir/src/Token.cc.o CMakeFiles/lox.dir/src/TokenType.cc.o CMakeFiles/lox.dir/src/Scanner.cc.o CMakeFiles/lox.dir/src/Object.cc.o CMakeFiles/lox.dir/src/AstPrinter.cc.o CMakeFiles/lox.dir/src/Expression.cc.o CMakeFiles/lox.dir/src/Parser.cc.o CMakeFiles/lox.dir/src/RuntimeError.cc.o CMakeFiles/lox.dir/src/Statements.cc.o
   ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
   LANGUAGE_COMPILE_FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
   OBJECT_DIR = CMakeFiles/lox.dir
@@ -743,7 +764,7 @@ build src/install/strip: phony src/CMakeFiles/install/strip.util
 #############################################
 # Utility command for build-tests
 
-build test/build-tests: phony test/CMakeFiles/build-tests test/test_astprinter test/test_scanner
+build test/build-tests: phony test/CMakeFiles/build-tests test/test_astprinter test/test_leaks test/test_parser test/test_scanner
 
 # =============================================================================
 # Object build statements for EXECUTABLE target test_astprinter
@@ -778,6 +799,74 @@ build test/test_astprinter test/test_astprinter[1]_tests.cmake | ${cmake_ninja_w
   RESTAT = 1
   TARGET_FILE = test/test_astprinter
   TARGET_PDB = test_astprinter.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target test_leaks
+
+
+#############################################
+# Order-only phony target for test_leaks
+
+build cmake_object_order_depends_target_test_leaks: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_lox
+
+build test/CMakeFiles/test_leaks.dir/test_leaks.cc.o: CXX_COMPILER__test_leaks_unscanned_Debug /Users/catkin/Study/compilers/test/test_leaks.cc || cmake_object_order_depends_target_test_leaks
+  DEP_FILE = test/CMakeFiles/test_leaks.dir/test_leaks.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIE -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest/include -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest
+  OBJECT_DIR = test/CMakeFiles/test_leaks.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/test_leaks.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test_leaks
+
+
+#############################################
+# Link the executable test/test_leaks
+
+build test/test_leaks test/test_leaks[1]_tests.cmake | ${cmake_ninja_workdir}test/test_leaks[1]_tests.cmake: CXX_EXECUTABLE_LINKER__test_leaks_Debug test/CMakeFiles/test_leaks.dir/test_leaks.cc.o | lib/liblox.a lib/libgtest.a || lib/libgtest.a lib/liblox.a
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
+  LINK_LIBRARIES = lib/liblox.a  lib/libgtest.a
+  OBJECT_DIR = test/CMakeFiles/test_leaks.dir
+  POST_BUILD = cd /Users/catkin/Study/compilers/cmake-build-debug/test && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -D TEST_TARGET=test_leaks -D TEST_EXECUTABLE=/Users/catkin/Study/compilers/cmake-build-debug/test/test_leaks -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/Users/catkin/Study/compilers/cmake-build-debug/test -D "TEST_EXTRA_ARGS=--gtest_output=xml:/Users/catkin/Study/compilers/cmake-build-debug/test/test_leaks.xml;--gtest_catch_exceptions=0" -D "TEST_PROPERTIES=TIMEOUT;120" -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=test_leaks_TESTS -D CTEST_FILE=/Users/catkin/Study/compilers/cmake-build-debug/test/test_leaks[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=120 -D TEST_XML_OUTPUT_DIR= -P /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28/Modules/GoogleTestAddTests.cmake
+  PRE_LINK = :
+  RESTAT = 1
+  TARGET_FILE = test/test_leaks
+  TARGET_PDB = test_leaks.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target test_parser
+
+
+#############################################
+# Order-only phony target for test_parser
+
+build cmake_object_order_depends_target_test_parser: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_lox
+
+build test/CMakeFiles/test_parser.dir/test_parser.cc.o: CXX_COMPILER__test_parser_unscanned_Debug /Users/catkin/Study/compilers/test/test_parser.cc || cmake_object_order_depends_target_test_parser
+  DEP_FILE = test/CMakeFiles/test_parser.dir/test_parser.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIE -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest/include -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest
+  OBJECT_DIR = test/CMakeFiles/test_parser.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/test_parser.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test_parser
+
+
+#############################################
+# Link the executable test/test_parser
+
+build test/test_parser test/test_parser[1]_tests.cmake | ${cmake_ninja_workdir}test/test_parser[1]_tests.cmake: CXX_EXECUTABLE_LINKER__test_parser_Debug test/CMakeFiles/test_parser.dir/test_parser.cc.o | lib/liblox.a lib/libgtest.a || lib/libgtest.a lib/liblox.a
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
+  LINK_LIBRARIES = lib/liblox.a  lib/libgtest.a
+  OBJECT_DIR = test/CMakeFiles/test_parser.dir
+  POST_BUILD = cd /Users/catkin/Study/compilers/cmake-build-debug/test && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -D TEST_TARGET=test_parser -D TEST_EXECUTABLE=/Users/catkin/Study/compilers/cmake-build-debug/test/test_parser -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/Users/catkin/Study/compilers/cmake-build-debug/test -D "TEST_EXTRA_ARGS=--gtest_output=xml:/Users/catkin/Study/compilers/cmake-build-debug/test/test_parser.xml;--gtest_catch_exceptions=0" -D "TEST_PROPERTIES=TIMEOUT;120" -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=test_parser_TESTS -D CTEST_FILE=/Users/catkin/Study/compilers/cmake-build-debug/test/test_parser[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=120 -D TEST_XML_OUTPUT_DIR= -P /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28/Modules/GoogleTestAddTests.cmake
+  PRE_LINK = :
+  RESTAT = 1
+  TARGET_FILE = test/test_parser
+  TARGET_PDB = test_parser.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target test_scanner
@@ -894,7 +983,7 @@ build test/install/strip: phony test/CMakeFiles/install/strip.util
 #############################################
 # Custom command for test/CMakeFiles/build-tests
 
-build test/CMakeFiles/build-tests | ${cmake_ninja_workdir}test/CMakeFiles/build-tests: CUSTOM_COMMAND || lib/libgtest.a lib/liblox.a test/test_astprinter test/test_scanner
+build test/CMakeFiles/build-tests | ${cmake_ninja_workdir}test/CMakeFiles/build-tests: CUSTOM_COMMAND || lib/libgtest.a lib/liblox.a test/test_astprinter test/test_leaks test/test_parser test/test_scanner
   COMMAND = cd /Users/catkin/Study/compilers/cmake-build-debug/test && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/ctest --show-only
 
 # =============================================================================
@@ -924,6 +1013,10 @@ build lox: phony lib/liblox.a
 
 build test_astprinter: phony test/test_astprinter
 
+build test_leaks: phony test/test_leaks
+
+build test_parser: phony test/test_parser
+
 build test_scanner: phony test/test_scanner
 
 # =============================================================================
@@ -948,7 +1041,7 @@ build src/all: phony
 #############################################
 # Folder: /Users/catkin/Study/compilers/cmake-build-debug/test
 
-build test/all: phony test/test_astprinter test/test_scanner
+build test/all: phony test/test_astprinter test/test_leaks test/test_parser test/test_scanner
 
 # =============================================================================
 

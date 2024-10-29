@@ -47,6 +47,8 @@
 /Users/catkin/Study/compilers/cmake-build-debug/src/CMakeFiles/install/strip.dir
 /Users/catkin/Study/compilers/cmake-build-debug/test/CMakeFiles/build-tests.dir
 /Users/catkin/Study/compilers/cmake-build-debug/test/CMakeFiles/test_astprinter.dir
+/Users/catkin/Study/compilers/cmake-build-debug/test/CMakeFiles/test_leaks.dir
+/Users/catkin/Study/compilers/cmake-build-debug/test/CMakeFiles/test_parser.dir
 /Users/catkin/Study/compilers/cmake-build-debug/test/CMakeFiles/test_scanner.dir
 /Users/catkin/Study/compilers/cmake-build-debug/test/CMakeFiles/test.dir
 /Users/catkin/Study/compilers/cmake-build-debug/test/CMakeFiles/edit_cache.dir

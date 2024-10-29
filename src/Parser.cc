@@ -1,24 +1,97 @@
 #include "include/Parser.h"
 #include "include/Expression.h"
-#include "include/Lox.h"
 #include "include/Object.h"
-#include "include/Scanner.h"
+#include "include/Statements.h"
 #include "include/Token.h"
 #include "include/Tokentype.h"
 #include <memory>
+#include <stdexcept>
+#include <vector>
 namespace lox {
 
-static Lox lox;
+auto Parser::parse() -> std::vector<StmtRef> {
+    std::vector<StmtRef> statements;
+    while (!isAtEnd()) {
+        statements.push_back(declaration());
+    }
+    return statements;
+}
 
-auto Parser::parse() -> AbstractExpressionRef<Object> {
+auto Parser::statement() -> StmtRef {
+    if (match(PRINT))
+        return std::dynamic_pointer_cast<Stmt>(printStatement());
+    if (match(LEFT_BRACE)) {
+        auto blockStmt = std::make_shared<BlockStmt>(block());
+        return std::dynamic_pointer_cast<Stmt>(blockStmt);
+    }
+    return std::dynamic_pointer_cast<Stmt>(expressionStatment());
+}
+
+auto Parser::declaration() -> StmtRef {
     try {
-        return expression();
-    } catch (ParserError error) {
+        if (match(VAR)) {
+            return varDeclaration();
+        }
+        return statement();
+    } catch (std::runtime_error error) {
+        synchronize();
+        return nullptr;
     }
 }
 
+auto Parser::varDeclaration() -> StmtRef {
+    auto name = consume(IDENTIFIER, "Expect variable name.");
+    AbstractExpressionRef<Object> initializer = nullptr;
+    if (match(EQUAL)) {
+        initializer = expression();
+    }
+    consume(SEMICOLON, "Exprect ':' after variable declaration.");
+    auto varRes = std::make_shared<VarStmt>(name, initializer);
+    return std::dynamic_pointer_cast<Stmt>(varRes);
+}
+
+auto Parser::printStatement() -> PrintStmtRef {
+    auto value = expression();
+    consume(SEMICOLON, "Exprect ';' after value.");
+    auto res = std::make_shared<PrintStmt>(value);
+    return res;
+}
+
+auto Parser::expressionStatment() -> ExpressionStmtRef {
+    auto value = expression();
+    consume(SEMICOLON, "Exprect ';' after expression.");
+    auto res = std::make_shared<ExpressionStmt>(value);
+    return res;
+}
+
+auto Parser::block() -> std::vector<StmtRef> {
+    std::vector<StmtRef> statements;
+    while (!check(RIGHT_BRACE) && !isAtEnd()) {
+        statements.push_back(declaration());
+    }
+    consume(RIGHT_BRACE, "Expect '}' after block.");
+    return statements;
+}
+
+auto Parser::assignment() -> AbstractExpressionRef<Object> {
+    auto expr = equality();
+    if (match(EQUAL)) {
+        auto equals = previous();
+        auto value = assignment();
+        auto variable = dynamic_cast<VariableExpression<Object> *>(expr.get());
+        if (variable != nullptr) {
+            auto name = variable->getName();
+            auto res =
+                std::make_shared<AssignmentExpression<Object>>(name, value);
+            return res;
+        }
+        error(equals, "Invalid assignment target.");
+    }
+    return expr;
+}
+
 auto Parser::expression() -> AbstractExpressionRef<Object> {
-    return equality();
+    return assignment();
 }
 
 auto Parser::equality() -> AbstractExpressionRef<Object> {
@@ -103,11 +176,19 @@ auto Parser::primary() -> AbstractExpressionRef<Object> {
     }
 
     if (match(NUMBER, STRING)) {
-        auto pre_literal_obj = previous()->getLiteral();
+        auto pre_literal_obj = *previous()->getLiteral().get();
         auto pre_literal_expr =
             std::make_shared<LiteralExpression<Object>>(pre_literal_obj);
         auto res = std::static_pointer_cast<AbstractExpression<Object>>(
             pre_literal_expr);
+        return res;
+    }
+
+    if (match(IDENTIFIER)) {
+        auto var_obj = previous();
+        auto var_expr = std::make_shared<VariableExpression<Object>>(var_obj);
+        auto res =
+            std::static_pointer_cast<AbstractExpression<Object>>(var_expr);
         return res;
     }
 
@@ -135,6 +216,7 @@ auto Parser::consume(TokenType type, std::string message) -> TokenRef {
     throw error(peek(), message);
 }
 
+// 判断当前current指向的token的type和给定的token的type是否相同
 auto Parser::check(TokenType type) -> bool {
     if (isAtEnd())
         return false;
@@ -151,9 +233,14 @@ auto Parser::isAtEnd() -> bool { return peek()->getType() == EOF_TOKEN; }
 auto Parser::peek() -> TokenRef { return m_tokens[m_current]; }
 auto Parser::previous() -> TokenRef { return m_tokens[m_current - 1]; }
 
-auto Parser::error(TokenRef token, std::string message) -> ParserError {
-    lox.error(token, message);
-    return ParserError();
+std::runtime_error Parser::error(TokenRef token, std::string message) {
+    if (token->getType() == EOF_TOKEN) {
+        return std::runtime_error(std::to_string(token->getLine()) + " at end" +
+                                  message);
+    } else {
+        return std::runtime_error(std::to_string(token->getLine()) + " at '" +
+                                  token->getLexeme() + "'" + message);
+    }
 }
 
 auto Parser::synchronize() -> void {
@@ -161,7 +248,6 @@ auto Parser::synchronize() -> void {
     while (!isAtEnd()) {
         if (previous()->getType() == SEMICOLON)
             return;
-
         switch (peek()->getType()) {
         default:
             return;
@@ -175,7 +261,6 @@ auto Parser::synchronize() -> void {
         case RETURN:
             return;
         }
-
         advance();
     }
 }

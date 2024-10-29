@@ -118,7 +118,12 @@ add_library(
   ${PROJECT_SOURCE_DIR}/src/Scanner.cc
   ${PROJECT_SOURCE_DIR}/src/Object.cc
   ${PROJECT_SOURCE_DIR}/src/AstPrinter.cc
-  ${PROJECT_SOURCE_DIR}/src/Expression.cc)
+  ${PROJECT_SOURCE_DIR}/src/Expression.cc
+  ${PROJECT_SOURCE_DIR}/src/Parser.cc
+  ${PROJECT_SOURCE_DIR}/src/RuntimeError.cc
+  ${PROJECT_SOURCE_DIR}/src/Statements.cc
+  ${PROJECT_SOURCE_DIR}/src/Interpreter.cc
+  ${PROJECT_SOURCE_DIR}/src/Environment.cc)
 
 # Other CMake modules MUST BE ADDED AFTER CONFIGURING COMPILER PARAMETERS
 # ##############################################################################

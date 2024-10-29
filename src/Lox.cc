@@ -1,6 +1,10 @@
 #include "include/Lox.h"
+#include "Interpreter.h"
+#include "Parser.h"
+#include "Scanner.h"
 #include "include/Tokentype.h"
 
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -9,7 +13,21 @@
 #include <stdexcept>
 namespace lox {
 
-void Lox::run(const std::string &content) { std::stringstream input(content); }
+auto Lox::hasError = false;
+auto Lox::hasRuntimeError = false;
+
+void Lox::run(const std::string &source) {
+    auto scanner = std::make_shared<Scanner>(source);
+    auto tokens = scanner->scanTokens();
+    auto parser = std::make_shared<Parser>(tokens);
+
+    auto expr = parser->parse();
+
+    if (hasError)
+        return;
+    auto interpreter = std::make_shared<Interpreter>();
+    interpreter->interpret(expr);
+}
 
 void Lox::runFile(const std::string &path) {
     // 检查文件是否存在
@@ -25,6 +43,10 @@ void Lox::runFile(const std::string &path) {
     std::stringstream buffer;
     buffer << file.rdbuf(); // 将文件内容读入缓冲区
     run(buffer.str());      // 将内容传递给run函数
+    if (hasError)
+        std::exit(65);
+    if (hasRuntimeError)
+        std::exit(70);
 }
 
 void Lox::runPrompt() {
@@ -52,6 +74,12 @@ auto Lox::error(TokenRef token, std::string message) -> void {
     } else {
         report(token->getLine(), " at ", message);
     }
+}
+void Lox::runtimeError(RuntimeError error) {
+    std::cout << std::string(error.what()) + "\n[line " +
+                     std::to_string(error.getToken()->getLine()) + "]"
+              << std::endl;
+    hasRuntimeError = true;
 }
 
 } // namespace lox

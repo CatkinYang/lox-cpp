@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <string>
 
 namespace lox {
@@ -25,6 +26,11 @@ class Object {
     // static Object make_fun_obj(shared_ptr<LoxCallable> function_);
     // static Object make_instance_obj(shared_ptr<LoxInstance> instance_);
     // static Object make_class_obj(shared_ptr<LoxClass> lox_class_);
+    auto getType() -> Object_type { return m_type; }
+    auto getBool() -> bool { return m_boolean; }
+    auto getNum() -> double { return m_num; }
+    auto getStr() -> std::string { return m_str; };
+
   private:
     std::string m_str;
     double m_num;
@@ -32,4 +38,7 @@ class Object {
     int *m_nil;
     Object_type m_type;
 };
+
+using ObjectRef = std::shared_ptr<Object>;
+
 } // namespace lox

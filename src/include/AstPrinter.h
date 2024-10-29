@@ -1,5 +1,6 @@
 #pragma once
 #include "Expression.h"
+#include "Object.h"
 #include <memory>
 #include <string>
 namespace lox {
@@ -12,5 +13,8 @@ class AstPrinter : public Visitor<std::string>,
     std::string visitBinaryExpr(BinaryExpressionRef<std::string> expr);
     std::string visitUnaryExpr(UnaryExpressionRef<std::string> expr);
     std::string visitGroupingExpr(GroupingExpressionRef<std::string> expr);
+    std::string visitVariableExpr(VariableExpressionRef<std::string> expr);
+    std::string visitAssignmentExpr(AssignmentExpressionRef<std::string> expr);
 };
+
 } // namespace lox
