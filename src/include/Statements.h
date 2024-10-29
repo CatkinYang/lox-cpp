@@ -11,11 +11,18 @@ class ExpressionStmt;
 class PrintStmt;
 class VarStmt;
 class BlockStmt;
+class IfStmt;
+class WhileStmt;
+class ForStmt;
+
 using StmtRef = std::shared_ptr<Stmt>;
 using ExpressionStmtRef = std::shared_ptr<ExpressionStmt>;
 using PrintStmtRef = std::shared_ptr<PrintStmt>;
 using VarStmtRef = std::shared_ptr<VarStmt>;
 using BlockStmtRef = std::shared_ptr<BlockStmt>;
+using IfStmtRef = std::shared_ptr<IfStmt>;
+using WhileStmtRef = std::shared_ptr<WhileStmt>;
+using ForStmtRef = std::shared_ptr<ForStmt>;
 
 class StmtVisitor {
   public:
@@ -24,6 +31,8 @@ class StmtVisitor {
     virtual void visitPrintStmt(PrintStmtRef stmt) = 0;
     virtual void visitVarStmt(VarStmtRef stmt) = 0;
     virtual void visitBlockStmt(BlockStmtRef stmt) = 0;
+    virtual void visitIfStmt(IfStmtRef stmt) = 0;
+    virtual void visitWhileStmt(WhileStmtRef stmt) = 0;
 };
 using StmtVistiorRef = std::shared_ptr<StmtVisitor>;
 
@@ -82,6 +91,40 @@ class BlockStmt : public Stmt, public std::enable_shared_from_this<BlockStmt> {
 
   private:
     std::vector<StmtRef> m_statements;
+};
+
+class IfStmt : public Stmt, public std::enable_shared_from_this<IfStmt> {
+  public:
+    IfStmt(AbstractExpressionRef<Object> condition, StmtRef thenBranch,
+           StmtRef elseBranch)
+        : m_condition(condition), m_thenBranch(thenBranch),
+          m_elseBranch(elseBranch) {};
+
+    virtual void accept(StmtVistiorRef visitor) override;
+
+    auto getCondition() -> AbstractExpressionRef<Object> { return m_condition; }
+    auto getThen() { return m_thenBranch; }
+    auto getElse() { return m_elseBranch; }
+
+  private:
+    AbstractExpressionRef<Object> m_condition;
+    StmtRef m_thenBranch;
+    StmtRef m_elseBranch;
+};
+
+class WhileStmt : public Stmt, public std::enable_shared_from_this<WhileStmt> {
+  public:
+    WhileStmt(AbstractExpressionRef<Object> condition, StmtRef body)
+        : m_condition(condition), m_body(body) {}
+
+    virtual void accept(StmtVistiorRef visitor) override;
+
+    auto getCondition() -> AbstractExpressionRef<Object> { return m_condition; }
+    auto getBody() -> StmtRef { return m_body; }
+
+  private:
+    AbstractExpressionRef<Object> m_condition;
+    StmtRef m_body;
 };
 
 } // namespace lox

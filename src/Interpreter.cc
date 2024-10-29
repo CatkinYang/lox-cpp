@@ -111,6 +111,19 @@ auto Interpreter::evaluate(AbstractExpressionRef<Object> expr) -> Object {
     return expr->accept(shared_from_this());
 }
 
+auto Interpreter::visitLogicalExpr(LogicalExpressionRef<Object> expr)
+    -> Object {
+    auto left = evaluate(expr->getLeftExpr());
+    if (expr->getOperation()->getType() == OR) {
+        if (isTruthy(left))
+            return left;
+    } else {
+        if (!isTruthy(left))
+            return left;
+    }
+    return evaluate(expr->getRightExpr());
+}
+
 /*******************************************************************/
 /*         Statements      */
 /*******************************************************************/
@@ -138,6 +151,22 @@ auto Interpreter::visitVarStmt(VarStmtRef stmt) -> void {
 auto Interpreter::visitBlockStmt(BlockStmtRef stmt) -> void {
     auto new_env = std::make_shared<Environment>(getEnvironment());
     executeBlock(stmt->getStmt(), new_env);
+    return;
+}
+
+auto Interpreter::visitIfStmt(IfStmtRef stmt) -> void {
+    if (isTruthy(evaluate(stmt->getCondition()))) {
+        execute(stmt->getThen());
+    } else if (stmt->getElse() != nullptr) {
+        execute(stmt->getElse());
+    }
+    return;
+}
+
+auto Interpreter::visitWhileStmt(WhileStmtRef stmt) -> void {
+    if (isTruthy(evaluate(stmt->getCondition()))) {
+        execute(stmt->getBody());
+    }
     return;
 }
 

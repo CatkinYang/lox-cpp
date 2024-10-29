@@ -14,6 +14,7 @@ template <class R> class LiteralExpression;
 template <class R> class GroupingExpression;
 template <class R> class VariableExpression;
 template <class R> class AssignmentExpression;
+template <class R> class LogicalExpression;
 
 template <class R>
 using AbstractExpressionRef = std::shared_ptr<AbstractExpression<R>>;
@@ -29,6 +30,8 @@ template <class R>
 using VariableExpressionRef = std::shared_ptr<VariableExpression<R>>;
 template <class R>
 using AssignmentExpressionRef = std::shared_ptr<AssignmentExpression<R>>;
+template <class R>
+using LogicalExpressionRef = std::shared_ptr<LogicalExpression<R>>;
 
 // 访问者模式
 // 抽象访问者
@@ -42,6 +45,7 @@ template <class R> class Visitor {
     virtual R visitGroupingExpr(GroupingExpressionRef<R> expr) = 0;
     virtual R visitVariableExpr(VariableExpressionRef<R> expr) = 0;
     virtual R visitAssignmentExpr(AssignmentExpressionRef<R> expr) = 0;
+    virtual R visitLogicalExpr(LogicalExpressionRef<R> expr) = 0;
 };
 
 template <class R> using VisitorRef = std::shared_ptr<Visitor<R>>;
@@ -153,6 +157,26 @@ class AssignmentExpression
   private:
     TokenRef m_name;
     AbstractExpressionRef<R> m_values;
+};
+
+template <class R>
+class LogicalExpression
+    : public AbstractExpression<R>,
+      public std::enable_shared_from_this<LogicalExpression<R>> {
+  public:
+    explicit LogicalExpression(AbstractExpressionRef<R> left,
+                               AbstractExpressionRef<R> right, TokenRef opt)
+        : m_left(left), m_right(right), m_opt(opt) {};
+    auto accept(VisitorRef<R>) -> R override;
+
+    auto getOperation() { return m_opt; }
+    auto getLeftExpr() { return m_left; }
+    auto getRightExpr() { return m_right; }
+
+  private:
+    AbstractExpressionRef<R> m_left;
+    AbstractExpressionRef<R> m_right;
+    TokenRef m_opt;
 };
 
 } // namespace lox

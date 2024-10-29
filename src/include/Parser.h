@@ -21,11 +21,23 @@ class Parser {
     auto declaration() -> StmtRef;
     auto varDeclaration() -> StmtRef;
 
-    auto printStatement() -> PrintStmtRef;
-    auto expressionStatment() -> ExpressionStmtRef;
+    // auto printStatement() -> PrintStmtRef;
+    // auto expressionStatment() -> ExpressionStmtRef;
+    // auto ifStatement() -> IfStmtRef;
+    // auto whileStatement() -> WhileStmtRef;
+    // auto forStatement() -> ForStmtRef;
+
+    auto printStatement() -> StmtRef;
+    auto expressionStatment() -> StmtRef;
+    auto ifStatement() -> StmtRef;
+    auto whileStatement() -> StmtRef;
+    auto forStatement() -> StmtRef;
+
     auto block() -> std::vector<StmtRef>;
 
     auto assignment() -> AbstractExpressionRef<Object>;
+    auto Or() -> AbstractExpressionRef<Object>;
+    auto And() -> AbstractExpressionRef<Object>;
 
   public:
     // 顶级表达式，可以匹配任何优先级的表达式

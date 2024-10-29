@@ -20,12 +20,15 @@ class Interpreter : public Visitor<Object>,
     auto visitBinaryExpr(BinaryExpressionRef<Object> expr) -> Object;
     auto visitVariableExpr(VariableExpressionRef<Object> expr) -> Object;
     auto visitAssignmentExpr(AssignmentExpressionRef<Object> expr) -> Object;
+    auto visitLogicalExpr(LogicalExpressionRef<Object> expr) -> Object;
     auto evaluate(AbstractExpressionRef<Object> expr) -> Object;
 
     auto visitExpressionStmt(ExpressionStmtRef stmt) -> void;
     auto visitPrintStmt(PrintStmtRef stmt) -> void;
     auto visitVarStmt(VarStmtRef stmt) -> void;
     auto visitBlockStmt(BlockStmtRef stmt) -> void;
+    auto visitIfStmt(IfStmtRef stmt) -> void;
+    auto visitWhileStmt(WhileStmtRef stmt) -> void;
     auto evaluate(StmtRef stmt) -> void;
 
     auto execute(StmtRef stmt) -> void;

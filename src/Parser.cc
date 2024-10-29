@@ -18,8 +18,19 @@ auto Parser::parse() -> std::vector<StmtRef> {
 }
 
 auto Parser::statement() -> StmtRef {
+    if (match(FOR))
+        return std::dynamic_pointer_cast<Stmt>(forStatement());
+
+    if (match(IF))
+        return std::dynamic_pointer_cast<Stmt>(ifStatement());
+
     if (match(PRINT))
         return std::dynamic_pointer_cast<Stmt>(printStatement());
+
+    if (match(WHILE))
+
+        return std::dynamic_pointer_cast<Stmt>(whileStatement());
+
     if (match(LEFT_BRACE)) {
         auto blockStmt = std::make_shared<BlockStmt>(block());
         return std::dynamic_pointer_cast<Stmt>(blockStmt);
@@ -50,18 +61,121 @@ auto Parser::varDeclaration() -> StmtRef {
     return std::dynamic_pointer_cast<Stmt>(varRes);
 }
 
-auto Parser::printStatement() -> PrintStmtRef {
+// auto Parser::printStatement() -> PrintStmtRef {
+//     auto value = expression();
+//     consume(SEMICOLON, "Exprect ';' after value.");
+//     auto res = std::make_shared<PrintStmt>(value);
+//     return res;
+// }
+
+// auto Parser::expressionStatment() -> ExpressionStmtRef {
+//     auto value = expression();
+//     consume(SEMICOLON, "Exprect ';' after expression.");
+//     auto res = std::make_shared<ExpressionStmt>(value);
+//     return res;
+// }
+
+// auto Parser::ifStatement() -> IfStmtRef {
+//     consume(LEFT_PAREN, "Expect '(' after 'if'.");
+//     auto condition = expression();
+//     consume(RIGHT_PAREN, "Expect ')' after if condition");
+
+//     auto thenBranch = statement();
+//     StmtRef elseBranch = nullptr;
+//     if (match(ELSE)) {
+//         elseBranch = statement();
+//     }
+//     auto if_res = std::make_shared<IfStmt>(condition, thenBranch,
+//     elseBranch); return if_res;
+// }
+
+// auto Parser::whileStatement() -> WhileStmtRef {
+//     consume(LEFT_PAREN, "Expect '(' after 'while'.");
+//     auto condition = expression();
+//     consume(RIGHT_PAREN, "Expect ')' aftercondition");
+
+//     auto body = statement();
+//     auto while_res = std::make_shared<WhileStmt>(condition, body);
+//     return while_res;
+// }
+
+auto Parser::printStatement() -> StmtRef {
     auto value = expression();
     consume(SEMICOLON, "Exprect ';' after value.");
     auto res = std::make_shared<PrintStmt>(value);
     return res;
 }
 
-auto Parser::expressionStatment() -> ExpressionStmtRef {
+auto Parser::expressionStatment() -> StmtRef {
     auto value = expression();
     consume(SEMICOLON, "Exprect ';' after expression.");
     auto res = std::make_shared<ExpressionStmt>(value);
     return res;
+}
+
+auto Parser::ifStatement() -> StmtRef {
+    consume(LEFT_PAREN, "Expect '(' after 'if'.");
+    auto condition = expression();
+    consume(RIGHT_PAREN, "Expect ')' after if condition");
+
+    auto thenBranch = statement();
+    StmtRef elseBranch = nullptr;
+    if (match(ELSE)) {
+        elseBranch = statement();
+    }
+    auto if_res = std::make_shared<IfStmt>(condition, thenBranch, elseBranch);
+    return if_res;
+}
+
+auto Parser::whileStatement() -> StmtRef {
+    consume(LEFT_PAREN, "Expect '(' after 'while'.");
+    auto condition = expression();
+    consume(RIGHT_PAREN, "Expect ')' aftercondition");
+
+    auto body = statement();
+    auto while_res = std::make_shared<WhileStmt>(condition, body);
+    return while_res;
+}
+
+auto Parser::forStatement() -> StmtRef {
+    consume(LEFT_PAREN, "Expect '(' after 'for'.");
+    StmtRef initializer;
+    if (match(SEMICOLON)) {
+        initializer = nullptr;
+    } else if (match(VAR)) {
+        initializer = varDeclaration();
+    } else {
+        initializer = expressionStatment();
+    }
+    AbstractExpressionRef<Object> condition = nullptr;
+    if (!check(SEMICOLON)) {
+        condition = expression();
+    }
+    consume(LEFT_PAREN, "Expect ';' after loop condition.");
+
+    AbstractExpressionRef<Object> increment = nullptr;
+    if (!check(RIGHT_PAREN)) {
+        increment = expression();
+    }
+    consume(RIGHT_PAREN, "Expect ')' after for clauses.");
+    auto body = statement();
+
+    if (increment != nullptr) {
+        auto increment_stmt = std::make_shared<ExpressionStmt>(increment);
+        std::vector<StmtRef> vec = {body, increment_stmt};
+        body = std::make_shared<BlockStmt>(vec);
+    }
+    if (condition == nullptr) {
+        auto literal_obj = Object::make_bool_obj(true);
+        condition = std::make_shared<LiteralExpression<Object>>(literal_obj);
+    }
+    body = std::make_shared<WhileStmt>(
+        std::dynamic_pointer_cast<AbstractExpression<Object>>(condition), body);
+    if (initializer != nullptr) {
+        std::vector<StmtRef> vec = {initializer, body};
+        body = std::make_shared<BlockStmt>(vec);
+    }
+    return body;
 }
 
 auto Parser::block() -> std::vector<StmtRef> {
@@ -86,6 +200,30 @@ auto Parser::assignment() -> AbstractExpressionRef<Object> {
             return res;
         }
         error(equals, "Invalid assignment target.");
+    }
+    return expr;
+}
+
+auto Parser::Or() -> AbstractExpressionRef<Object> {
+    auto expr = And();
+    while (match(OR)) {
+        auto opt = previous();
+        auto right = And();
+        auto logical =
+            std::make_shared<LogicalExpression<Object>>(expr, right, opt);
+        expr = logical;
+    }
+    return expr;
+}
+
+auto Parser::And() -> AbstractExpressionRef<Object> {
+    auto expr = equality();
+    while (match(AND)) {
+        auto opt = previous();
+        auto right = equality();
+        auto logical =
+            std::make_shared<LogicalExpression<Object>>(expr, right, opt);
+        expr = logical;
     }
     return expr;
 }

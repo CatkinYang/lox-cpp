@@ -18,4 +18,12 @@ void BlockStmt::accept(StmtVistiorRef visitor) {
     visitor->visitBlockStmt(shared_from_this());
 }
 
+void IfStmt::accept(StmtVistiorRef visitor) {
+    visitor->visitIfStmt(shared_from_this());
+}
+
+void WhileStmt::accept(StmtVistiorRef visitor) {
+    visitor->visitWhileStmt(shared_from_this());
+}
+
 } // namespace lox
