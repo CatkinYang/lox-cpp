@@ -9,10 +9,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/catkin/Study/compilers/src/AstPrinter.cc" "CMakeFiles/lox.dir/src/AstPrinter.cc.o" "gcc" "CMakeFiles/lox.dir/src/AstPrinter.cc.o.d"
+  "/Users/catkin/Study/compilers/src/Environment.cc" "CMakeFiles/lox.dir/src/Environment.cc.o" "gcc" "CMakeFiles/lox.dir/src/Environment.cc.o.d"
   "/Users/catkin/Study/compilers/src/Expression.cc" "CMakeFiles/lox.dir/src/Expression.cc.o" "gcc" "CMakeFiles/lox.dir/src/Expression.cc.o.d"
+  "/Users/catkin/Study/compilers/src/Interpreter.cc" "CMakeFiles/lox.dir/src/Interpreter.cc.o" "gcc" "CMakeFiles/lox.dir/src/Interpreter.cc.o.d"
   "/Users/catkin/Study/compilers/src/Lox.cc" "CMakeFiles/lox.dir/src/Lox.cc.o" "gcc" "CMakeFiles/lox.dir/src/Lox.cc.o.d"
   "/Users/catkin/Study/compilers/src/Object.cc" "CMakeFiles/lox.dir/src/Object.cc.o" "gcc" "CMakeFiles/lox.dir/src/Object.cc.o.d"
+  "/Users/catkin/Study/compilers/src/Parser.cc" "CMakeFiles/lox.dir/src/Parser.cc.o" "gcc" "CMakeFiles/lox.dir/src/Parser.cc.o.d"
+  "/Users/catkin/Study/compilers/src/RuntimeError.cc" "CMakeFiles/lox.dir/src/RuntimeError.cc.o" "gcc" "CMakeFiles/lox.dir/src/RuntimeError.cc.o.d"
   "/Users/catkin/Study/compilers/src/Scanner.cc" "CMakeFiles/lox.dir/src/Scanner.cc.o" "gcc" "CMakeFiles/lox.dir/src/Scanner.cc.o.d"
+  "/Users/catkin/Study/compilers/src/Statements.cc" "CMakeFiles/lox.dir/src/Statements.cc.o" "gcc" "CMakeFiles/lox.dir/src/Statements.cc.o.d"
   "/Users/catkin/Study/compilers/src/Token.cc" "CMakeFiles/lox.dir/src/Token.cc.o" "gcc" "CMakeFiles/lox.dir/src/Token.cc.o.d"
   "/Users/catkin/Study/compilers/src/TokenType.cc" "CMakeFiles/lox.dir/src/TokenType.cc.o" "gcc" "CMakeFiles/lox.dir/src/TokenType.cc.o.d"
   )

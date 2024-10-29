@@ -214,6 +214,20 @@ test_leaks/fast:
 .PHONY : test_leaks/fast
 
 # Convenience name for target.
+test/CMakeFiles/test_parser.dir/rule:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_parser.dir/rule
+.PHONY : test/CMakeFiles/test_parser.dir/rule
+
+# Convenience name for target.
+test_parser: test/CMakeFiles/test_parser.dir/rule
+.PHONY : test_parser
+
+# fast build rule for target.
+test_parser/fast:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_parser.dir/build.make test/CMakeFiles/test_parser.dir/build
+.PHONY : test_parser/fast
+
+# Convenience name for target.
 test/CMakeFiles/test_scanner.dir/rule:
 	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_scanner.dir/rule
 .PHONY : test/CMakeFiles/test_scanner.dir/rule
@@ -275,6 +289,30 @@ test_leaks.cc.s:
 	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_leaks.dir/build.make test/CMakeFiles/test_leaks.dir/test_leaks.cc.s
 .PHONY : test_leaks.cc.s
 
+test_parser.o: test_parser.cc.o
+.PHONY : test_parser.o
+
+# target to build an object file
+test_parser.cc.o:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_parser.dir/build.make test/CMakeFiles/test_parser.dir/test_parser.cc.o
+.PHONY : test_parser.cc.o
+
+test_parser.i: test_parser.cc.i
+.PHONY : test_parser.i
+
+# target to preprocess a source file
+test_parser.cc.i:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_parser.dir/build.make test/CMakeFiles/test_parser.dir/test_parser.cc.i
+.PHONY : test_parser.cc.i
+
+test_parser.s: test_parser.cc.s
+.PHONY : test_parser.s
+
+# target to generate assembly for a file
+test_parser.cc.s:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_parser.dir/build.make test/CMakeFiles/test_parser.dir/test_parser.cc.s
+.PHONY : test_parser.cc.s
+
 test_scanner.o: test_scanner.cc.o
 .PHONY : test_scanner.o
 
@@ -315,6 +353,7 @@ help:
 	@echo "... build-tests"
 	@echo "... test_astprinter"
 	@echo "... test_leaks"
+	@echo "... test_parser"
 	@echo "... test_scanner"
 	@echo "... test_astprinter.o"
 	@echo "... test_astprinter.i"
@@ -322,6 +361,9 @@ help:
 	@echo "... test_leaks.o"
 	@echo "... test_leaks.i"
 	@echo "... test_leaks.s"
+	@echo "... test_parser.o"
+	@echo "... test_parser.i"
+	@echo "... test_parser.s"
 	@echo "... test_scanner.o"
 	@echo "... test_scanner.i"
 	@echo "... test_scanner.s"
