@@ -20,18 +20,14 @@ class Parser {
     auto statement() -> StmtRef;
     auto declaration() -> StmtRef;
     auto varDeclaration() -> StmtRef;
-
-    // auto printStatement() -> PrintStmtRef;
-    // auto expressionStatment() -> ExpressionStmtRef;
-    // auto ifStatement() -> IfStmtRef;
-    // auto whileStatement() -> WhileStmtRef;
-    // auto forStatement() -> ForStmtRef;
+    auto function(std::string kind) -> StmtRef;
 
     auto printStatement() -> StmtRef;
     auto expressionStatment() -> StmtRef;
     auto ifStatement() -> StmtRef;
     auto whileStatement() -> StmtRef;
     auto forStatement() -> StmtRef;
+    auto returnStatement() -> StmtRef;
 
     auto block() -> std::vector<StmtRef>;
 
@@ -49,6 +45,9 @@ class Parser {
     auto unary() -> AbstractExpressionRef<Object>;
     auto primary() -> AbstractExpressionRef<Object>;
 
+    auto call() -> AbstractExpressionRef<Object>;
+    auto finishCall(AbstractExpressionRef<Object> callee)
+        -> AbstractExpressionRef<Object>;
     // 检查当前current指向的token的type是否和传入的type相等
     auto check(TokenType type) -> bool;
     // 返回当前的token，并且前进一位

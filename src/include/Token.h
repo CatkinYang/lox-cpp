@@ -1,12 +1,13 @@
 #pragma once
+
 #include "Object.h"
 #include "Tokentype.h"
 #include <memory>
 #include <string>
 namespace lox {
 
-class Object;
-using ObjectRef = std::shared_ptr<Object>;
+class Token;
+using TokenRef = std::shared_ptr<Token>;
 
 class Token {
   public:
@@ -28,6 +29,5 @@ class Token {
     ObjectRef m_literal;  // 子面量
     int m_line;           // 行号
 };
-using TokenRef = std::shared_ptr<Token>;
 
 } // namespace lox

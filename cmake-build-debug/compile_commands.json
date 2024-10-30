@@ -61,6 +61,18 @@
 },
 {
   "directory": "/Users/catkin/Study/compilers/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics -o CMakeFiles/lox.dir/src/Interpreter.cc.o -c /Users/catkin/Study/compilers/src/Interpreter.cc",
+  "file": "/Users/catkin/Study/compilers/src/Interpreter.cc",
+  "output": "CMakeFiles/lox.dir/src/Interpreter.cc.o"
+},
+{
+  "directory": "/Users/catkin/Study/compilers/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics -o CMakeFiles/lox.dir/src/Environment.cc.o -c /Users/catkin/Study/compilers/src/Environment.cc",
+  "file": "/Users/catkin/Study/compilers/src/Environment.cc",
+  "output": "CMakeFiles/lox.dir/src/Environment.cc.o"
+},
+{
+  "directory": "/Users/catkin/Study/compilers/cmake-build-debug",
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -I/Users/catkin/Study/compilers/third_party/googletest/googlemock/include -I/Users/catkin/Study/compilers/third_party/googletest/googlemock -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest/include -isystem /Users/catkin/Study/compilers/third_party/googletest/googletest -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=c++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1   -o third_party/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /Users/catkin/Study/compilers/third_party/googletest/googlemock/src/gmock-all.cc",
   "file": "/Users/catkin/Study/compilers/third_party/googletest/googlemock/src/gmock-all.cc",
   "output": "third_party/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"

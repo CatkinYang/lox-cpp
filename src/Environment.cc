@@ -22,6 +22,10 @@ auto Environment::get(TokenRef name) -> ObjectRef {
     throw RuntimeError(name, "Undefined variable '" + name->getLexeme() + "'.");
 }
 
+auto Environment::getAt(int distance, std::string name) -> ObjectRef {
+    return ancestor(distance)->m_values[name];
+}
+
 auto Environment::assign(TokenRef name, ObjectRef value) -> void {
     if (m_values.find(name->getLexeme()) != m_values.end()) {
         m_values.insert({name->getLexeme(), value});
@@ -32,6 +36,19 @@ auto Environment::assign(TokenRef name, ObjectRef value) -> void {
         return;
     }
     throw RuntimeError(name, "Undefined variable '" + name->getLexeme() + "'.");
+}
+
+auto Environment::assignAt(int distance, TokenRef name, ObjectRef value)
+    -> void {
+    ancestor(distance)->m_values[name->getLexeme()] = value;
+}
+
+auto Environment::ancestor(int distance) -> EnvironmentRef {
+    EnvironmentRef environment = shared_from_this();
+    for (int i = 0; i < distance; i++) {
+        environment = environment->getEnclosing();
+    }
+    return environment;
 }
 
 } // namespace lox

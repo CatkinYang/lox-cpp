@@ -4,9 +4,6 @@
 #include <memory>
 namespace lox {
 
-class Token;
-using TokenRef = std::shared_ptr<Token>;
-
 template <class R> class AbstractExpression;
 template <class R> class BinaryExpression;
 template <class R> class UnaryExpression;
@@ -15,6 +12,7 @@ template <class R> class GroupingExpression;
 template <class R> class VariableExpression;
 template <class R> class AssignmentExpression;
 template <class R> class LogicalExpression;
+template <class R> class CallExpression;
 
 template <class R>
 using AbstractExpressionRef = std::shared_ptr<AbstractExpression<R>>;
@@ -32,8 +30,8 @@ template <class R>
 using AssignmentExpressionRef = std::shared_ptr<AssignmentExpression<R>>;
 template <class R>
 using LogicalExpressionRef = std::shared_ptr<LogicalExpression<R>>;
+template <class R> using CallExpressionRef = std::shared_ptr<CallExpression<R>>;
 
-// 访问者模式
 // 抽象访问者
 template <class R> class Visitor {
   public:
@@ -178,5 +176,30 @@ class LogicalExpression
     AbstractExpressionRef<R> m_right;
     TokenRef m_opt;
 };
+
+template <class R>
+class CallExpression : public AbstractExpression<R>,
+                       public std::enable_shared_from_this<CallExpression<R>> {
+  public:
+    explicit CallExpression();
+
+    auto getCallee() { return m_callee; }
+    auto getParen() { return m_paren; }
+    auto getArgs() { return m_arguments; }
+
+  private:
+    AbstractExpressionRef<R> m_callee;
+    TokenRef m_paren;
+    std::vector<AbstractExpressionRef<R>> m_arguments;
+};
+
+// template <class R>
+// class Expression : public Expression<R>,
+//                    public std::enable_shared_from_this<Expression<R>> {
+//   public:
+//     explicit Expression();
+
+//   private:
+// };
 
 } // namespace lox

@@ -1,8 +1,9 @@
 #include "include/Lox.h"
 #include "Interpreter.h"
 #include "Parser.h"
+#include "Resolver.h"
 #include "Scanner.h"
-#include "include/Tokentype.h"
+#include "Tokentype.h"
 
 #include <cstdlib>
 #include <filesystem>
@@ -25,7 +26,11 @@ void Lox::run(const std::string &source) {
 
     if (hasError)
         return;
+
     auto interpreter = std::make_shared<Interpreter>();
+    auto resolver = std::make_shared<Resolver>(interpreter);
+    if (hasError)
+        return;
     interpreter->interpret(expr);
 }
 

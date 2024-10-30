@@ -27,6 +27,9 @@ auto Parser::statement() -> StmtRef {
     if (match(PRINT))
         return std::dynamic_pointer_cast<Stmt>(printStatement());
 
+    if (match(RETURN))
+        return std::dynamic_pointer_cast<Stmt>(returnStatement());
+
     if (match(WHILE))
 
         return std::dynamic_pointer_cast<Stmt>(whileStatement());
@@ -40,6 +43,8 @@ auto Parser::statement() -> StmtRef {
 
 auto Parser::declaration() -> StmtRef {
     try {
+        if (match(FUN))
+            return function("function");
         if (match(VAR)) {
             return varDeclaration();
         }
@@ -57,60 +62,42 @@ auto Parser::varDeclaration() -> StmtRef {
         initializer = expression();
     }
     consume(SEMICOLON, "Exprect ':' after variable declaration.");
-    auto varRes = std::make_shared<VarStmt>(name, initializer);
-    return std::dynamic_pointer_cast<Stmt>(varRes);
+    auto var_stmt = std::make_shared<VarStmt>(name, initializer);
+    return var_stmt;
+    // return std::dynamic_pointer_cast<Stmt>(varRes);
 }
 
-// auto Parser::printStatement() -> PrintStmtRef {
-//     auto value = expression();
-//     consume(SEMICOLON, "Exprect ';' after value.");
-//     auto res = std::make_shared<PrintStmt>(value);
-//     return res;
-// }
-
-// auto Parser::expressionStatment() -> ExpressionStmtRef {
-//     auto value = expression();
-//     consume(SEMICOLON, "Exprect ';' after expression.");
-//     auto res = std::make_shared<ExpressionStmt>(value);
-//     return res;
-// }
-
-// auto Parser::ifStatement() -> IfStmtRef {
-//     consume(LEFT_PAREN, "Expect '(' after 'if'.");
-//     auto condition = expression();
-//     consume(RIGHT_PAREN, "Expect ')' after if condition");
-
-//     auto thenBranch = statement();
-//     StmtRef elseBranch = nullptr;
-//     if (match(ELSE)) {
-//         elseBranch = statement();
-//     }
-//     auto if_res = std::make_shared<IfStmt>(condition, thenBranch,
-//     elseBranch); return if_res;
-// }
-
-// auto Parser::whileStatement() -> WhileStmtRef {
-//     consume(LEFT_PAREN, "Expect '(' after 'while'.");
-//     auto condition = expression();
-//     consume(RIGHT_PAREN, "Expect ')' aftercondition");
-
-//     auto body = statement();
-//     auto while_res = std::make_shared<WhileStmt>(condition, body);
-//     return while_res;
-// }
+auto Parser::function(std::string kind) -> StmtRef {
+    auto name = consume(IDENTIFIER, "Expect " + kind + " name.");
+    consume(LEFT_PAREN, "Expect '(' after " + kind + " name.");
+    std::vector<TokenRef> parameters;
+    if (!check(RIGHT_PAREN)) {
+        do {
+            if (parameters.size() >= 255) {
+                error(peek(), "Can't have more than 255 parameters.");
+            }
+            parameters.push_back(consume(IDENTIFIER, "Expect parameter name."));
+        } while (match(COMMA));
+    }
+    consume(RIGHT_PAREN, "Expect ')' after parameters.");
+    consume(LEFT_BRACE, "Expect '{' before " + kind + " body.");
+    std::vector<StmtRef> body = block();
+    auto fun_stmt = std::make_shared<FunStmt>(name, parameters, body);
+    return fun_stmt;
+}
 
 auto Parser::printStatement() -> StmtRef {
     auto value = expression();
     consume(SEMICOLON, "Exprect ';' after value.");
-    auto res = std::make_shared<PrintStmt>(value);
-    return res;
+    auto print_stmt = std::make_shared<PrintStmt>(value);
+    return print_stmt;
 }
 
 auto Parser::expressionStatment() -> StmtRef {
     auto value = expression();
     consume(SEMICOLON, "Exprect ';' after expression.");
-    auto res = std::make_shared<ExpressionStmt>(value);
-    return res;
+    auto expr_stmt = std::make_shared<ExpressionStmt>(value);
+    return expr_stmt;
 }
 
 auto Parser::ifStatement() -> StmtRef {
@@ -123,8 +110,8 @@ auto Parser::ifStatement() -> StmtRef {
     if (match(ELSE)) {
         elseBranch = statement();
     }
-    auto if_res = std::make_shared<IfStmt>(condition, thenBranch, elseBranch);
-    return if_res;
+    auto if_stmt = std::make_shared<IfStmt>(condition, thenBranch, elseBranch);
+    return if_stmt;
 }
 
 auto Parser::whileStatement() -> StmtRef {
@@ -133,8 +120,8 @@ auto Parser::whileStatement() -> StmtRef {
     consume(RIGHT_PAREN, "Expect ')' aftercondition");
 
     auto body = statement();
-    auto while_res = std::make_shared<WhileStmt>(condition, body);
-    return while_res;
+    auto while_stmt = std::make_shared<WhileStmt>(condition, body);
+    return while_stmt;
 }
 
 auto Parser::forStatement() -> StmtRef {
@@ -176,6 +163,17 @@ auto Parser::forStatement() -> StmtRef {
         body = std::make_shared<BlockStmt>(vec);
     }
     return body;
+}
+
+auto Parser::returnStatement() -> StmtRef {
+    auto Keyword = previous();
+    AbstractExpressionRef<Object> value = nullptr;
+    if (!check(SEMICOLON)) {
+        value = expression();
+    }
+    consume(SEMICOLON, "Expect ';' after return value.");
+    auto return_stmt = std::make_shared<ReturnStmt>(Keyword, value);
+    return return_stmt;
 }
 
 auto Parser::block() -> std::vector<StmtRef> {
@@ -283,7 +281,37 @@ auto Parser::unary() -> AbstractExpressionRef<Object> {
         return std::static_pointer_cast<AbstractExpression<Object>>(
             std::make_shared<UnaryExpression<Object>>(right, opt));
     }
-    return primary();
+    // return primary();
+    return call();
+}
+
+auto Parser::call() -> AbstractExpressionRef<Object> {
+    auto expr = primary();
+    while (true) {
+        if (match(LEFT_PAREN)) {
+            expr = finishCall(expr);
+        } else {
+            break;
+        }
+    }
+    return expr;
+}
+
+auto Parser::finishCall(AbstractExpressionRef<Object> callee)
+    -> AbstractExpressionRef<Object> {
+    std::vector<AbstractExpressionRef<Object>> arguments;
+    if (!check(RIGHT_PAREN)) {
+        do {
+            if (arguments.size() >= 255) {
+                error(peek(), "Can't have more than 255 arguments.");
+            }
+            arguments.push_back(expression());
+        } while (match(COMMA));
+    }
+    auto paren = consume(RIGHT_PAREN, "Expect ')' after arguments.");
+    auto call_res =
+        std::make_shared<CallExpression<Object>>(callee, paren, arguments);
+    return call_res;
 }
 
 auto Parser::primary() -> AbstractExpressionRef<Object> {

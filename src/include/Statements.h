@@ -1,6 +1,7 @@
 #pragma once
 #include "Expression.h"
 #include "Object.h"
+#include "Token.h"
 #include <memory>
 #include <vector>
 
@@ -14,6 +15,8 @@ class BlockStmt;
 class IfStmt;
 class WhileStmt;
 class ForStmt;
+class FunStmt;
+class ReturnStmt;
 
 using StmtRef = std::shared_ptr<Stmt>;
 using ExpressionStmtRef = std::shared_ptr<ExpressionStmt>;
@@ -23,6 +26,8 @@ using BlockStmtRef = std::shared_ptr<BlockStmt>;
 using IfStmtRef = std::shared_ptr<IfStmt>;
 using WhileStmtRef = std::shared_ptr<WhileStmt>;
 using ForStmtRef = std::shared_ptr<ForStmt>;
+using FunStmtRef = std::shared_ptr<FunStmt>;
+using ReturnStmtRef = std::shared_ptr<ReturnStmt>;
 
 class StmtVisitor {
   public:
@@ -126,5 +131,35 @@ class WhileStmt : public Stmt, public std::enable_shared_from_this<WhileStmt> {
     AbstractExpressionRef<Object> m_condition;
     StmtRef m_body;
 };
+
+class FunStmt : public Stmt, public std::enable_shared_from_this<FunStmt> {
+  public:
+    auto getName() { return m_name; }
+    auto getParams() { return m_params; }
+    auto getBody() { return m_body; }
+
+  private:
+    TokenRef m_name;
+    std::vector<TokenRef> m_params;
+    std::vector<StmtRef> m_body;
+};
+
+class ReturnStmt : public Stmt,
+                   public std::enable_shared_from_this<ReturnStmt> {
+  public:
+    ReturnStmt(AbstractExpressionRef<Object> value) : m_value(value) {};
+
+    auto getValue() { return m_value; }
+    auto getKeyword() { return m_keyword; }
+
+  private:
+    TokenRef m_keyword;
+    AbstractExpressionRef<Object> m_value;
+};
+
+// class Stmt : public Stmt, public std::enable_shared_from_this<Stmt> {
+//   public:
+//   private:
+// };
 
 } // namespace lox

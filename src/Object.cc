@@ -1,6 +1,7 @@
-#include "include/Object.h"
+#include "Object.h"
 
 namespace lox {
+
 std::string Object::toString() {
     switch (m_type) {
     case Object_nil:
@@ -9,6 +10,8 @@ std::string Object::toString() {
         return m_boolean ? "1" : "0";
     case Object_str:
         return m_str;
+    case Object_fun:
+        return "function";
     default:
         return std::to_string(m_num);
     }
@@ -41,4 +44,12 @@ Object Object::make_nil_obj() {
     nil_obj.m_nil = nullptr;
     return nil_obj;
 }
+
+Object Object::make_fun_obj(LoxCallableRef function) {
+    Object fun_obj;
+    fun_obj.m_type = Object_fun;
+    fun_obj.m_function = function;
+    return fun_obj;
+}
+
 } // namespace lox
