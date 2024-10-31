@@ -1,6 +1,7 @@
 #include "Interpreter.h"
 #include "Lox.h"
 #include "LoxCallable.h"
+#include "LoxFunction.h"
 #include "Object.h"
 #include "Return.h"
 #include "RuntimeError.h"
@@ -142,7 +143,7 @@ auto Interpreter::visitCallExpr(CallExpressionRef<Object> expr) -> Object {
                            "Can only call functions and classes.");
     }
 
-    auto function = std::make_shared<LoxCallable>(callee.getFun());
+    LoxCallableRef function;
 
     if (arguments.size() != (size_t)function->arity()) {
         throw RuntimeError(expr->getParen(),

@@ -4,6 +4,7 @@
 #include "LoxCallable.h"
 #include "Statements.h"
 #include <memory>
+
 namespace lox {
 
 class LoxFunction;
@@ -16,8 +17,10 @@ class LoxFunction : public LoxCallable,
         : m_declaration(declaration), m_closure(closure) {};
 
     auto call(InterpreterRef interpreter, std::vector<ObjectRef> arguments)
-        -> ObjectRef;
-    auto arity() -> int;
+        -> ObjectRef override;
+
+    auto arity() -> int override;
+
     auto toString() -> std::string;
 
     auto getDeclaration() { return m_declaration; }

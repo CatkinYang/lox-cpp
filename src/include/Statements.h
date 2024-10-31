@@ -38,6 +38,8 @@ class StmtVisitor {
     virtual void visitBlockStmt(BlockStmtRef stmt) = 0;
     virtual void visitIfStmt(IfStmtRef stmt) = 0;
     virtual void visitWhileStmt(WhileStmtRef stmt) = 0;
+    virtual void visitFunStmt(FunStmtRef stmt) = 0;
+    virtual void visitReturnStmt(ReturnStmtRef stmt) = 0;
 };
 using StmtVistiorRef = std::shared_ptr<StmtVisitor>;
 
@@ -134,6 +136,11 @@ class WhileStmt : public Stmt, public std::enable_shared_from_this<WhileStmt> {
 
 class FunStmt : public Stmt, public std::enable_shared_from_this<FunStmt> {
   public:
+    FunStmt(TokenRef name, std::vector<TokenRef> params,
+            std::vector<StmtRef> body)
+        : m_name(name), m_params(params), m_body(body) {};
+    virtual void accept(StmtVistiorRef visitor) override;
+
     auto getName() { return m_name; }
     auto getParams() { return m_params; }
     auto getBody() { return m_body; }
@@ -147,7 +154,10 @@ class FunStmt : public Stmt, public std::enable_shared_from_this<FunStmt> {
 class ReturnStmt : public Stmt,
                    public std::enable_shared_from_this<ReturnStmt> {
   public:
-    ReturnStmt(AbstractExpressionRef<Object> value) : m_value(value) {};
+    ReturnStmt(TokenRef Keyword, AbstractExpressionRef<Object> value)
+        : m_keyword(Keyword), m_value(value) {};
+
+    virtual void accept(StmtVistiorRef visitor) override;
 
     auto getValue() { return m_value; }
     auto getKeyword() { return m_keyword; }

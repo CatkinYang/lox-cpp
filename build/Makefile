@@ -421,6 +421,30 @@ src/Lox.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Lox.cc.s
 .PHONY : src/Lox.cc.s
 
+src/LoxFunction.o: src/LoxFunction.cc.o
+.PHONY : src/LoxFunction.o
+
+# target to build an object file
+src/LoxFunction.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxFunction.cc.o
+.PHONY : src/LoxFunction.cc.o
+
+src/LoxFunction.i: src/LoxFunction.cc.i
+.PHONY : src/LoxFunction.i
+
+# target to preprocess a source file
+src/LoxFunction.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxFunction.cc.i
+.PHONY : src/LoxFunction.cc.i
+
+src/LoxFunction.s: src/LoxFunction.cc.s
+.PHONY : src/LoxFunction.s
+
+# target to generate assembly for a file
+src/LoxFunction.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxFunction.cc.s
+.PHONY : src/LoxFunction.cc.s
+
 src/Object.o: src/Object.cc.o
 .PHONY : src/Object.o
 
@@ -468,6 +492,30 @@ src/Parser.s: src/Parser.cc.s
 src/Parser.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Parser.cc.s
 .PHONY : src/Parser.cc.s
+
+src/Resolver.o: src/Resolver.cc.o
+.PHONY : src/Resolver.o
+
+# target to build an object file
+src/Resolver.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Resolver.cc.o
+.PHONY : src/Resolver.cc.o
+
+src/Resolver.i: src/Resolver.cc.i
+.PHONY : src/Resolver.i
+
+# target to preprocess a source file
+src/Resolver.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Resolver.cc.i
+.PHONY : src/Resolver.cc.i
+
+src/Resolver.s: src/Resolver.cc.s
+.PHONY : src/Resolver.s
+
+# target to generate assembly for a file
+src/Resolver.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Resolver.cc.s
+.PHONY : src/Resolver.cc.s
 
 src/RuntimeError.o: src/RuntimeError.cc.o
 .PHONY : src/RuntimeError.o
@@ -627,12 +675,18 @@ help:
 	@echo "... src/Lox.o"
 	@echo "... src/Lox.i"
 	@echo "... src/Lox.s"
+	@echo "... src/LoxFunction.o"
+	@echo "... src/LoxFunction.i"
+	@echo "... src/LoxFunction.s"
 	@echo "... src/Object.o"
 	@echo "... src/Object.i"
 	@echo "... src/Object.s"
 	@echo "... src/Parser.o"
 	@echo "... src/Parser.i"
 	@echo "... src/Parser.s"
+	@echo "... src/Resolver.o"
+	@echo "... src/Resolver.i"
+	@echo "... src/Resolver.s"
 	@echo "... src/RuntimeError.o"
 	@echo "... src/RuntimeError.i"
 	@echo "... src/RuntimeError.s"

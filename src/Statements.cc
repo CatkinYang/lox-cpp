@@ -26,4 +26,12 @@ void WhileStmt::accept(StmtVistiorRef visitor) {
     visitor->visitWhileStmt(shared_from_this());
 }
 
+void FunStmt::accept(StmtVistiorRef visitor) {
+    visitor->visitFunStmt(shared_from_this());
+}
+
+void ReturnStmt::accept(StmtVistiorRef visitor) {
+    visitor->visitReturnStmt(shared_from_this());
+}
+
 } // namespace lox

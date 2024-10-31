@@ -16,6 +16,7 @@ class AstPrinter : public Visitor<std::string>,
     std::string visitVariableExpr(VariableExpressionRef<std::string> expr);
     std::string visitAssignmentExpr(AssignmentExpressionRef<std::string> expr);
     std::string visitLogicalExpr(LogicalExpressionRef<std::string> expr);
+    std::string visitCallExpr(CallExpressionRef<std::string> expr);
 };
 
 } // namespace lox

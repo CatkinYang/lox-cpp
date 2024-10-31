@@ -38,6 +38,10 @@ auto LogicalExpression<R>::accept(VisitorRef<R> visitor) -> R {
     return visitor->visitLogicalExpr(this->shared_from_this());
 };
 
+template <class R> auto CallExpression<R>::accept(VisitorRef<R> visitor) -> R {
+    return visitor->visitCallExpr(this->shared_from_this());
+};
+
 template class LiteralExpression<std::string>;
 template class UnaryExpression<std::string>;
 template class BinaryExpression<std::string>;
@@ -45,6 +49,7 @@ template class GroupingExpression<std::string>;
 template class VariableExpression<std::string>;
 template class AssignmentExpression<std::string>;
 template class LogicalExpression<std::string>;
+template class CallExpression<std::string>;
 
 template class AbstractExpression<Object>;
 template class LiteralExpression<Object>;
@@ -54,5 +59,6 @@ template class GroupingExpression<Object>;
 template class VariableExpression<Object>;
 template class AssignmentExpression<Object>;
 template class LogicalExpression<Object>;
+template class CallExpression<Object>;
 
 } // namespace lox

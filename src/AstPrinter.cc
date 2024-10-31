@@ -1,4 +1,4 @@
-#include "include/AstPrinter.h"
+#include "AstPrinter.h"
 #include "Expression.h"
 #include <memory>
 #include <string>
@@ -63,6 +63,10 @@ AstPrinter::visitAssignmentExpr(AssignmentExpressionRef<std::string> expr) {
 
 std::string
 AstPrinter::visitLogicalExpr(LogicalExpressionRef<std::string> expr) {
+    return "";
+}
+
+std::string AstPrinter::visitCallExpr(CallExpressionRef<std::string> expr) {
     return "";
 }
 

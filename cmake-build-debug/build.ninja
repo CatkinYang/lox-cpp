@@ -49,8 +49,85 @@ cmake_ninja_workdir = /Users/catkin/Study/compilers/cmake-build-debug/
 
 build cmake_object_order_depends_target_lox: phony || CMakeFiles/lox.dir
 
+build CMakeFiles/lox.dir/src/AstPrinter.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/AstPrinter.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/AstPrinter.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Environment.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Environment.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Environment.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Expression.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Expression.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Expression.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Interpreter.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Interpreter.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Interpreter.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
 build CMakeFiles/lox.dir/src/Lox.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Lox.cc || cmake_object_order_depends_target_lox
   DEP_FILE = CMakeFiles/lox.dir/src/Lox.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/LoxFunction.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/LoxFunction.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/LoxFunction.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Object.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Object.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Object.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Parser.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Parser.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Parser.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Resolver.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Resolver.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Resolver.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/RuntimeError.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/RuntimeError.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/RuntimeError.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Scanner.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Scanner.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Scanner.cc.o.d
+  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
+  OBJECT_DIR = CMakeFiles/lox.dir
+  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
+
+build CMakeFiles/lox.dir/src/Statements.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Statements.cc || cmake_object_order_depends_target_lox
+  DEP_FILE = CMakeFiles/lox.dir/src/Statements.cc.o.d
   FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
   INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
   OBJECT_DIR = CMakeFiles/lox.dir
@@ -70,69 +147,6 @@ build CMakeFiles/lox.dir/src/TokenType.cc.o: CXX_COMPILER__lox_unscanned_Debug /
   OBJECT_DIR = CMakeFiles/lox.dir
   OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
 
-build CMakeFiles/lox.dir/src/Scanner.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Scanner.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/Scanner.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/Object.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Object.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/Object.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/AstPrinter.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/AstPrinter.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/AstPrinter.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/Expression.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Expression.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/Expression.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/Parser.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Parser.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/Parser.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/RuntimeError.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/RuntimeError.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/RuntimeError.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/Statements.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Statements.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/Statements.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/Interpreter.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Interpreter.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/Interpreter.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
-build CMakeFiles/lox.dir/src/Environment.cc.o: CXX_COMPILER__lox_unscanned_Debug /Users/catkin/Study/compilers/src/Environment.cc || cmake_object_order_depends_target_lox
-  DEP_FILE = CMakeFiles/lox.dir/src/Environment.cc.o.d
-  FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -fcolor-diagnostics
-  INCLUDES = -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party
-  OBJECT_DIR = CMakeFiles/lox.dir
-  OBJECT_FILE_DIR = CMakeFiles/lox.dir/src
-
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target lox
@@ -141,7 +155,7 @@ build CMakeFiles/lox.dir/src/Environment.cc.o: CXX_COMPILER__lox_unscanned_Debug
 #############################################
 # Link the static library lib/liblox.a
 
-build lib/liblox.a: CXX_STATIC_LIBRARY_LINKER__lox_Debug CMakeFiles/lox.dir/src/Lox.cc.o CMakeFiles/lox.dir/src/Token.cc.o CMakeFiles/lox.dir/src/TokenType.cc.o CMakeFiles/lox.dir/src/Scanner.cc.o CMakeFiles/lox.dir/src/Object.cc.o CMakeFiles/lox.dir/src/AstPrinter.cc.o CMakeFiles/lox.dir/src/Expression.cc.o CMakeFiles/lox.dir/src/Parser.cc.o CMakeFiles/lox.dir/src/RuntimeError.cc.o CMakeFiles/lox.dir/src/Statements.cc.o CMakeFiles/lox.dir/src/Interpreter.cc.o CMakeFiles/lox.dir/src/Environment.cc.o
+build lib/liblox.a: CXX_STATIC_LIBRARY_LINKER__lox_Debug CMakeFiles/lox.dir/src/AstPrinter.cc.o CMakeFiles/lox.dir/src/Environment.cc.o CMakeFiles/lox.dir/src/Expression.cc.o CMakeFiles/lox.dir/src/Interpreter.cc.o CMakeFiles/lox.dir/src/Lox.cc.o CMakeFiles/lox.dir/src/LoxFunction.cc.o CMakeFiles/lox.dir/src/Object.cc.o CMakeFiles/lox.dir/src/Parser.cc.o CMakeFiles/lox.dir/src/Resolver.cc.o CMakeFiles/lox.dir/src/RuntimeError.cc.o CMakeFiles/lox.dir/src/Scanner.cc.o CMakeFiles/lox.dir/src/Statements.cc.o CMakeFiles/lox.dir/src/Token.cc.o CMakeFiles/lox.dir/src/TokenType.cc.o
   ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
   LANGUAGE_COMPILE_FLAGS = -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
   OBJECT_DIR = CMakeFiles/lox.dir

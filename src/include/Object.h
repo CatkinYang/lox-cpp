@@ -10,9 +10,6 @@ using ObjectRef = std::shared_ptr<Object>;
 class LoxCallable;
 using LoxCallableRef = std::shared_ptr<LoxCallable>;
 
-class LoxFunction;
-using LoxFunctionRef = std::shared_ptr<LoxFunction>;
-
 // class LoxCallable;
 // using LoxCallableRef = std::shared_ptr<LoxCallable>;
 

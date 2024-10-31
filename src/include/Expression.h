@@ -2,6 +2,7 @@
 
 #include "Token.h"
 #include <memory>
+#include <vector>
 namespace lox {
 
 template <class R> class AbstractExpression;
@@ -44,6 +45,7 @@ template <class R> class Visitor {
     virtual R visitVariableExpr(VariableExpressionRef<R> expr) = 0;
     virtual R visitAssignmentExpr(AssignmentExpressionRef<R> expr) = 0;
     virtual R visitLogicalExpr(LogicalExpressionRef<R> expr) = 0;
+    virtual R visitCallExpr(CallExpressionRef<R> expr) = 0;
 };
 
 template <class R> using VisitorRef = std::shared_ptr<Visitor<R>>;
@@ -181,7 +183,11 @@ template <class R>
 class CallExpression : public AbstractExpression<R>,
                        public std::enable_shared_from_this<CallExpression<R>> {
   public:
-    explicit CallExpression();
+    explicit CallExpression(AbstractExpressionRef<R> callee, TokenRef paren,
+                            std::vector<AbstractExpressionRef<R>> args)
+        : m_callee(callee), m_paren(paren), m_arguments(args) {};
+
+    auto accept(VisitorRef<R>) -> R override;
 
     auto getCallee() { return m_callee; }
     auto getParen() { return m_paren; }

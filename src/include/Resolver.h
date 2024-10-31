@@ -42,6 +42,8 @@ class Resolver : public StmtVisitor,
     auto visitReturnStmt(ReturnStmtRef stmt) -> void;
     auto visitWhileStmt(WhileStmtRef stmt) -> void;
 
+    auto visitFunStmt(FunStmtRef stmt) -> void {}
+
     auto visitLiteralExpr(LiteralExpressionRef<Object> expr) -> Object;
     auto visitGroupingExpr(GroupingExpressionRef<Object> expr) -> Object;
     auto visitUnaryExpr(UnaryExpressionRef<Object> expr) -> Object;
