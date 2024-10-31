@@ -12,7 +12,7 @@
 namespace lox {
 
 enum class FunctionType { NONE, FUNCTION, INITIALIZER, METHOD };
-enum class ClassType { NONE, CLASS };
+enum class ClassType { NONE, CLASS, SUBCLASS };
 
 class Resolver : public StmtVisitor,
                  public Visitor<Object>,
@@ -56,6 +56,7 @@ class Resolver : public StmtVisitor,
     auto visitGetExpr(GetExpressionRef<Object> expr) -> Object;
     auto visitSetExpr(SetExpressionRef<Object> expr) -> Object;
     auto visitThisExpr(ThisExpressionRef<Object> expr) -> Object;
+    auto visitSuperExpr(SuperExpressionRef<Object> expr) -> Object;
 
   private:
     InterpreterRef m_interpret;

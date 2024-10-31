@@ -91,6 +91,12 @@ auto Parser::function(std::string kind) -> StmtRef {
 
 auto Parser::classDeclaration() -> StmtRef {
     auto name = consume(IDENTIFIER, "Expect class name.");
+    VariableExpressionRef<Object> superclass = nullptr;
+    if (match(LESS)) {
+        consume(IDENTIFIER, "Expect superclass name.");
+        superclass = std::make_shared<VariableExpression<Object>>(previous());
+    }
+
     consume(LEFT_BRACE, "Expect '{' before class body.");
     std::vector<FunStmtRef> methods;
     while (!check(RIGHT_BRACE) && !isAtEnd()) {
@@ -100,7 +106,7 @@ auto Parser::classDeclaration() -> StmtRef {
 
     consume(RIGHT_BRACE, "Expect '}' after class body.");
 
-    auto class_stmt = std::make_shared<ClassStmt>(name, methods);
+    auto class_stmt = std::make_shared<ClassStmt>(name, superclass, methods);
     return class_stmt;
 }
 
@@ -370,6 +376,14 @@ auto Parser::primary() -> AbstractExpressionRef<Object> {
             std::make_shared<LiteralExpression<Object>>(pre_literal_obj);
         auto res = std::static_pointer_cast<AbstractExpression<Object>>(
             pre_literal_expr);
+        return res;
+    }
+    if (match(SUPER)) {
+        auto keyword = previous();
+        consume(DOT, "Expect '.' after 'super'.");
+        auto method = consume(IDENTIFIER, "Expect superclass method name.");
+        auto super = std::make_shared<SuperExpression<Object>>(keyword, method);
+        auto res = std::static_pointer_cast<AbstractExpression<Object>>(super);
         return res;
     }
 

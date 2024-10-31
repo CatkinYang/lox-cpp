@@ -175,13 +175,19 @@ class ClassStmt : public Stmt, public std::enable_shared_from_this<ClassStmt> {
     ClassStmt(TokenRef name, std::vector<FunStmtRef> methods)
         : m_name(name), m_methods(methods) {};
 
+    ClassStmt(TokenRef name, VariableExpressionRef<Object> superclass,
+              std::vector<FunStmtRef> methods)
+        : m_name(name), m_methods(methods) {};
+
     virtual void accept(StmtVistiorRef visitor) override;
 
     auto getName() { return m_name; }
     auto getMethods() { return m_methods; }
+    auto getSuper() { return m_superclass; }
 
   private:
     TokenRef m_name;
+    VariableExpressionRef<Object> m_superclass;
     std::vector<FunStmtRef> m_methods;
 };
 

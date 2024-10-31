@@ -1,4 +1,5 @@
 #include "Interpreter.h"
+#include "Environment.h"
 #include "Lox.h"
 #include "LoxCallable.h"
 #include "LoxFunction.h"
@@ -196,6 +197,26 @@ auto Interpreter::visitThisExpr(ThisExpressionRef<Object> expr) -> Object {
     return lookUpVariable(expr->getKeyword(), expr);
 }
 
+auto Interpreter::visitSuperExpr(SuperExpressionRef<Object> expr) -> Object {
+    auto distance = m_locals.at(expr);
+    auto superclass_obj = m_env->getAt(distance, "super");
+    auto superclass = superclass_obj->getClass();
+
+    auto instance_obj = m_env->getAt(distance - 1, "this");
+    auto instance = instance_obj->getInstance();
+
+    auto method_obj = superclass->findMethod(expr->getMethod()->getLexeme());
+
+    if (method_obj == nullptr) {
+        throw RuntimeError(expr->getMethod(),
+                           "Undefined property '" +
+                               expr->getMethod()->getLexeme() + "'.");
+    }
+
+    auto res = method_obj->bind(instance);
+    return Object::make_fun_obj(method_obj);
+}
+
 /*******************************************************************/
 /*         Statements      */
 /*******************************************************************/
@@ -260,7 +281,23 @@ auto Interpreter::visitReturnStmt(ReturnStmtRef stmt) -> void {
 }
 
 auto Interpreter::visitClassStmt(ClassStmtRef stmt) -> void {
+    ObjectRef superclass_obj = nullptr;
+
+    if (stmt->getSuper() != nullptr) {
+        superclass_obj = std::make_shared<Object>(evaluate(stmt->getSuper()));
+        if (superclass_obj->getType() != Object::Object_class) {
+            throw RuntimeError(stmt->getSuper()->getName(),
+                               "Superclass must be a class.");
+        }
+    }
+
     m_env->define(stmt->getName()->getLexeme(), nullptr);
+
+    if (stmt->getSuper() != nullptr) {
+        m_env = std::make_shared<Environment>(m_env);
+        m_env->define(stmt->getName()->getLexeme(), nullptr);
+    }
+
     std::unordered_map<std::string, LoxFunctionRef> methods;
     for (auto &method : stmt->getMethods()) {
         bool tmp = (method->getName()->getLexeme() == "init");
@@ -268,10 +305,15 @@ auto Interpreter::visitClassStmt(ClassStmtRef stmt) -> void {
         methods.insert({method->getName()->getLexeme(), fun});
     }
 
-    auto klass =
-        std::make_shared<LoxClass>(stmt->getName()->getLexeme(), methods);
+    auto klass = std::make_shared<LoxClass>(
+        stmt->getName()->getLexeme(), superclass_obj->getClass(), methods);
     auto klass_obj = Object::make_class_obj(klass);
     auto klass_obj_ref = std::make_shared<Object>(klass_obj);
+
+    if (superclass_obj != nullptr) {
+        m_env = m_env->getEnclosing();
+    }
+
     m_env->assign(stmt->getName(), klass_obj_ref);
     return;
 }

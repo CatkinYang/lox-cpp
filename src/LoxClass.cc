@@ -9,6 +9,10 @@ auto LoxClass::findMethod(std::string name) -> LoxFunctionRef {
     if (m_methods.find(name) != m_methods.end()) {
         return m_methods.at(name);
     }
+    if (m_super != nullptr) {
+        return m_super->findMethod(name);
+    }
+
     return nullptr;
 }
 

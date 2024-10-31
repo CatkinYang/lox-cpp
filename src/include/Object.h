@@ -42,6 +42,7 @@ class Object {
     auto getStr() -> std::string { return m_str; };
     auto getFun() -> LoxCallableRef { return m_function; };
     auto getInstance() -> LoxInstanceRef { return m_instance; }
+    auto getClass() -> LoxClassRef { return m_class; }
 
   private:
     std::string m_str;

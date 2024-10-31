@@ -17,6 +17,7 @@ template <class R> class CallExpression;
 template <class R> class GetExpression;
 template <class R> class SetExpression;
 template <class R> class ThisExpression;
+template <class R> class SuperExpression;
 
 template <class R>
 using AbstractExpressionRef = std::shared_ptr<AbstractExpression<R>>;
@@ -34,7 +35,8 @@ template <class R>
 using AssignmentExpressionRef = std::shared_ptr<AssignmentExpression<R>>;
 template <class R>
 using LogicalExpressionRef = std::shared_ptr<LogicalExpression<R>>;
-
+template <class R>
+using SuperExpressionRef = std::shared_ptr<SuperExpression<R>>;
 template <class R> using CallExpressionRef = std::shared_ptr<CallExpression<R>>;
 template <class R> using GetExpressionRef = std::shared_ptr<GetExpression<R>>;
 template <class R> using SetExpressionRef = std::shared_ptr<SetExpression<R>>;
@@ -56,6 +58,7 @@ template <class R> class Visitor {
     virtual R visitGetExpr(GetExpressionRef<R> expr) = 0;
     virtual R visitSetExpr(SetExpressionRef<R> expr) = 0;
     virtual R visitThisExpr(ThisExpressionRef<R> expr) = 0;
+    virtual R visitSuperExpr(SuperExpressionRef<R> expr) = 0;
 };
 
 template <class R> using VisitorRef = std::shared_ptr<Visitor<R>>;
@@ -258,6 +261,24 @@ class ThisExpression : public AbstractExpression<R>,
 
   private:
     TokenRef m_keyword;
+};
+
+template <class R>
+class SuperExpression
+    : public AbstractExpression<R>,
+      public std::enable_shared_from_this<SuperExpression<R>> {
+  public:
+    explicit SuperExpression(TokenRef keyword, TokenRef method)
+        : m_keyword(keyword), m_method(method) {};
+
+    auto accept(VisitorRef<R>) -> R override;
+
+    auto getKey() { return m_keyword; }
+    auto getMethod() { return m_method; }
+
+  private:
+    TokenRef m_keyword;
+    TokenRef m_method;
 };
 
 // template <class R>

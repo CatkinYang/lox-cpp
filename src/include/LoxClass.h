@@ -9,12 +9,15 @@
 
 namespace lox {
 
+class LoxClass;
+using LoxClassRef = std::shared_ptr<LoxClass>;
+
 class LoxClass : public LoxCallable,
                  public std::enable_shared_from_this<LoxClass> {
   public:
-    explicit LoxClass(std::string name,
+    explicit LoxClass(std::string name, LoxClassRef super,
                       std::unordered_map<std::string, LoxFunctionRef> methods)
-        : m_name(name), m_methods(methods) {};
+        : m_name(name), m_super(super), m_methods(methods) {};
 
     auto findMethod(std::string name) -> LoxFunctionRef;
     auto call(InterpreterRef interpreter, std::vector<ObjectRef> arguments)
@@ -27,9 +30,8 @@ class LoxClass : public LoxCallable,
 
   private:
     std::string m_name;
+    LoxClassRef m_super;
     std::unordered_map<std::string, LoxFunctionRef> m_methods;
 };
-
-using LoxClassRef = std::shared_ptr<LoxClass>;
 
 } // namespace lox

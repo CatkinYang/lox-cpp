@@ -137,6 +137,21 @@ auto Resolver::visitClassStmt(ClassStmtRef stmt) -> void {
     current_class = ClassType::CLASS;
     declare(stmt->getName());
     define(stmt->getName());
+    if (stmt->getSuper() != nullptr &&
+        stmt->getName()->getLexeme() ==
+            stmt->getSuper()->getName()->getLexeme()) {
+        lox.error(stmt->getSuper()->getName(),
+                  "A class can't inherit from itself.");
+    }
+    if (stmt->getSuper() != nullptr) {
+        current_class = ClassType::SUBCLASS;
+        resolve(stmt->getSuper());
+    }
+
+    if (stmt->getSuper() != nullptr) {
+        beginScope();
+        m_scopes.back().insert({"super", true});
+    }
 
     beginScope();
     m_scopes.back().insert({"this", true});
@@ -150,6 +165,8 @@ auto Resolver::visitClassStmt(ClassStmtRef stmt) -> void {
         resolveFun(method, declaration);
     }
     endScope();
+    if (stmt->getSuper() != nullptr)
+        endScope();
     current_class = enclosingClass;
     return;
 }
@@ -226,6 +243,20 @@ auto Resolver::visitThisExpr(ThisExpressionRef<Object> expr) -> Object {
         return Object::make_nil_obj();
     }
     resolveLocal(expr, expr->getKeyword());
+    return Object::make_nil_obj();
+}
+
+auto Resolver::visitSuperExpr(SuperExpressionRef<Object> expr) -> Object {
+
+    if (current_class == ClassType::NONE) {
+        lox.error(expr->getKey(), "Can't use 'super' outside of a class.");
+    } else if (current_class == ClassType::SUBCLASS) {
+
+        lox.error(expr->getKey(),
+                  "Can't use 'super' in a class with no superclass.");
+    }
+
+    resolveLocal(expr, expr->getKey());
     return Object::make_nil_obj();
 }
 

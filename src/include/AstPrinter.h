@@ -22,6 +22,9 @@ class AstPrinter : public Visitor<std::string>,
     std::string visitThisExpr(ThisExpressionRef<std::string> expr) {
         return "";
     }
+    std::string visitSuperExpr(SuperExpressionRef<std::string> expr) {
+        return "";
+    }
 };
 
 } // namespace lox

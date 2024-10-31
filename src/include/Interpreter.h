@@ -31,6 +31,7 @@ class Interpreter : public Visitor<Object>,
     auto visitGetExpr(GetExpressionRef<Object> expr) -> Object;
     auto visitSetExpr(SetExpressionRef<Object> expr) -> Object;
     auto visitThisExpr(ThisExpressionRef<Object> expr) -> Object;
+    auto visitSuperExpr(SuperExpressionRef<Object> expr) -> Object;
 
     auto evaluate(AbstractExpressionRef<Object> expr) -> Object;
 
