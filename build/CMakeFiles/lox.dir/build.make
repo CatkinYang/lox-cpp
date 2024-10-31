@@ -139,10 +139,24 @@ CMakeFiles/lox.dir/src/Lox.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lox.dir/src/Lox.cc.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/catkin/Study/compilers/src/Lox.cc -o CMakeFiles/lox.dir/src/Lox.cc.s
 
+CMakeFiles/lox.dir/src/LoxClass.cc.o: CMakeFiles/lox.dir/flags.make
+CMakeFiles/lox.dir/src/LoxClass.cc.o: /Users/catkin/Study/compilers/src/LoxClass.cc
+CMakeFiles/lox.dir/src/LoxClass.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/lox.dir/src/LoxClass.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/LoxClass.cc.o -MF CMakeFiles/lox.dir/src/LoxClass.cc.o.d -o CMakeFiles/lox.dir/src/LoxClass.cc.o -c /Users/catkin/Study/compilers/src/LoxClass.cc
+
+CMakeFiles/lox.dir/src/LoxClass.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lox.dir/src/LoxClass.cc.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/catkin/Study/compilers/src/LoxClass.cc > CMakeFiles/lox.dir/src/LoxClass.cc.i
+
+CMakeFiles/lox.dir/src/LoxClass.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lox.dir/src/LoxClass.cc.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/catkin/Study/compilers/src/LoxClass.cc -o CMakeFiles/lox.dir/src/LoxClass.cc.s
+
 CMakeFiles/lox.dir/src/LoxFunction.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/LoxFunction.cc.o: /Users/catkin/Study/compilers/src/LoxFunction.cc
 CMakeFiles/lox.dir/src/LoxFunction.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/lox.dir/src/LoxFunction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/lox.dir/src/LoxFunction.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/LoxFunction.cc.o -MF CMakeFiles/lox.dir/src/LoxFunction.cc.o.d -o CMakeFiles/lox.dir/src/LoxFunction.cc.o -c /Users/catkin/Study/compilers/src/LoxFunction.cc
 
 CMakeFiles/lox.dir/src/LoxFunction.cc.i: cmake_force
@@ -153,10 +167,24 @@ CMakeFiles/lox.dir/src/LoxFunction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lox.dir/src/LoxFunction.cc.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/catkin/Study/compilers/src/LoxFunction.cc -o CMakeFiles/lox.dir/src/LoxFunction.cc.s
 
+CMakeFiles/lox.dir/src/LoxInstance.cc.o: CMakeFiles/lox.dir/flags.make
+CMakeFiles/lox.dir/src/LoxInstance.cc.o: /Users/catkin/Study/compilers/src/LoxInstance.cc
+CMakeFiles/lox.dir/src/LoxInstance.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/lox.dir/src/LoxInstance.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/LoxInstance.cc.o -MF CMakeFiles/lox.dir/src/LoxInstance.cc.o.d -o CMakeFiles/lox.dir/src/LoxInstance.cc.o -c /Users/catkin/Study/compilers/src/LoxInstance.cc
+
+CMakeFiles/lox.dir/src/LoxInstance.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lox.dir/src/LoxInstance.cc.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/catkin/Study/compilers/src/LoxInstance.cc > CMakeFiles/lox.dir/src/LoxInstance.cc.i
+
+CMakeFiles/lox.dir/src/LoxInstance.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lox.dir/src/LoxInstance.cc.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/catkin/Study/compilers/src/LoxInstance.cc -o CMakeFiles/lox.dir/src/LoxInstance.cc.s
+
 CMakeFiles/lox.dir/src/Object.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/Object.cc.o: /Users/catkin/Study/compilers/src/Object.cc
 CMakeFiles/lox.dir/src/Object.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/lox.dir/src/Object.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/lox.dir/src/Object.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/Object.cc.o -MF CMakeFiles/lox.dir/src/Object.cc.o.d -o CMakeFiles/lox.dir/src/Object.cc.o -c /Users/catkin/Study/compilers/src/Object.cc
 
 CMakeFiles/lox.dir/src/Object.cc.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/lox.dir/src/Object.cc.s: cmake_force
 CMakeFiles/lox.dir/src/Parser.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/Parser.cc.o: /Users/catkin/Study/compilers/src/Parser.cc
 CMakeFiles/lox.dir/src/Parser.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/lox.dir/src/Parser.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/lox.dir/src/Parser.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/Parser.cc.o -MF CMakeFiles/lox.dir/src/Parser.cc.o.d -o CMakeFiles/lox.dir/src/Parser.cc.o -c /Users/catkin/Study/compilers/src/Parser.cc
 
 CMakeFiles/lox.dir/src/Parser.cc.i: cmake_force
@@ -184,7 +212,7 @@ CMakeFiles/lox.dir/src/Parser.cc.s: cmake_force
 CMakeFiles/lox.dir/src/Resolver.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/Resolver.cc.o: /Users/catkin/Study/compilers/src/Resolver.cc
 CMakeFiles/lox.dir/src/Resolver.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/lox.dir/src/Resolver.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/lox.dir/src/Resolver.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/Resolver.cc.o -MF CMakeFiles/lox.dir/src/Resolver.cc.o.d -o CMakeFiles/lox.dir/src/Resolver.cc.o -c /Users/catkin/Study/compilers/src/Resolver.cc
 
 CMakeFiles/lox.dir/src/Resolver.cc.i: cmake_force
@@ -198,7 +226,7 @@ CMakeFiles/lox.dir/src/Resolver.cc.s: cmake_force
 CMakeFiles/lox.dir/src/RuntimeError.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/RuntimeError.cc.o: /Users/catkin/Study/compilers/src/RuntimeError.cc
 CMakeFiles/lox.dir/src/RuntimeError.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/lox.dir/src/RuntimeError.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/lox.dir/src/RuntimeError.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/RuntimeError.cc.o -MF CMakeFiles/lox.dir/src/RuntimeError.cc.o.d -o CMakeFiles/lox.dir/src/RuntimeError.cc.o -c /Users/catkin/Study/compilers/src/RuntimeError.cc
 
 CMakeFiles/lox.dir/src/RuntimeError.cc.i: cmake_force
@@ -212,7 +240,7 @@ CMakeFiles/lox.dir/src/RuntimeError.cc.s: cmake_force
 CMakeFiles/lox.dir/src/Scanner.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/Scanner.cc.o: /Users/catkin/Study/compilers/src/Scanner.cc
 CMakeFiles/lox.dir/src/Scanner.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/lox.dir/src/Scanner.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/lox.dir/src/Scanner.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/Scanner.cc.o -MF CMakeFiles/lox.dir/src/Scanner.cc.o.d -o CMakeFiles/lox.dir/src/Scanner.cc.o -c /Users/catkin/Study/compilers/src/Scanner.cc
 
 CMakeFiles/lox.dir/src/Scanner.cc.i: cmake_force
@@ -226,7 +254,7 @@ CMakeFiles/lox.dir/src/Scanner.cc.s: cmake_force
 CMakeFiles/lox.dir/src/Statements.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/Statements.cc.o: /Users/catkin/Study/compilers/src/Statements.cc
 CMakeFiles/lox.dir/src/Statements.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/lox.dir/src/Statements.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/lox.dir/src/Statements.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/Statements.cc.o -MF CMakeFiles/lox.dir/src/Statements.cc.o.d -o CMakeFiles/lox.dir/src/Statements.cc.o -c /Users/catkin/Study/compilers/src/Statements.cc
 
 CMakeFiles/lox.dir/src/Statements.cc.i: cmake_force
@@ -240,7 +268,7 @@ CMakeFiles/lox.dir/src/Statements.cc.s: cmake_force
 CMakeFiles/lox.dir/src/Token.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/Token.cc.o: /Users/catkin/Study/compilers/src/Token.cc
 CMakeFiles/lox.dir/src/Token.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/lox.dir/src/Token.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/lox.dir/src/Token.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/Token.cc.o -MF CMakeFiles/lox.dir/src/Token.cc.o.d -o CMakeFiles/lox.dir/src/Token.cc.o -c /Users/catkin/Study/compilers/src/Token.cc
 
 CMakeFiles/lox.dir/src/Token.cc.i: cmake_force
@@ -254,7 +282,7 @@ CMakeFiles/lox.dir/src/Token.cc.s: cmake_force
 CMakeFiles/lox.dir/src/TokenType.cc.o: CMakeFiles/lox.dir/flags.make
 CMakeFiles/lox.dir/src/TokenType.cc.o: /Users/catkin/Study/compilers/src/TokenType.cc
 CMakeFiles/lox.dir/src/TokenType.cc.o: CMakeFiles/lox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/lox.dir/src/TokenType.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/lox.dir/src/TokenType.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lox.dir/src/TokenType.cc.o -MF CMakeFiles/lox.dir/src/TokenType.cc.o.d -o CMakeFiles/lox.dir/src/TokenType.cc.o -c /Users/catkin/Study/compilers/src/TokenType.cc
 
 CMakeFiles/lox.dir/src/TokenType.cc.i: cmake_force
@@ -272,7 +300,9 @@ lox_OBJECTS = \
 "CMakeFiles/lox.dir/src/Expression.cc.o" \
 "CMakeFiles/lox.dir/src/Interpreter.cc.o" \
 "CMakeFiles/lox.dir/src/Lox.cc.o" \
+"CMakeFiles/lox.dir/src/LoxClass.cc.o" \
 "CMakeFiles/lox.dir/src/LoxFunction.cc.o" \
+"CMakeFiles/lox.dir/src/LoxInstance.cc.o" \
 "CMakeFiles/lox.dir/src/Object.cc.o" \
 "CMakeFiles/lox.dir/src/Parser.cc.o" \
 "CMakeFiles/lox.dir/src/Resolver.cc.o" \
@@ -290,7 +320,9 @@ lib/liblox.a: CMakeFiles/lox.dir/src/Environment.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/Expression.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/Interpreter.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/Lox.cc.o
+lib/liblox.a: CMakeFiles/lox.dir/src/LoxClass.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/LoxFunction.cc.o
+lib/liblox.a: CMakeFiles/lox.dir/src/LoxInstance.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/Object.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/Parser.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/Resolver.cc.o
@@ -301,7 +333,7 @@ lib/liblox.a: CMakeFiles/lox.dir/src/Token.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/src/TokenType.cc.o
 lib/liblox.a: CMakeFiles/lox.dir/build.make
 lib/liblox.a: CMakeFiles/lox.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library lib/liblox.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/catkin/Study/compilers/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX static library lib/liblox.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/lox.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lox.dir/link.txt --verbose=$(VERBOSE)
 

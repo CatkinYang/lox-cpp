@@ -31,9 +31,21 @@
 },
 {
   "directory": "/Users/catkin/Study/compilers/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -o CMakeFiles/lox.dir/src/LoxClass.cc.o -c /Users/catkin/Study/compilers/src/LoxClass.cc",
+  "file": "/Users/catkin/Study/compilers/src/LoxClass.cc",
+  "output": "CMakeFiles/lox.dir/src/LoxClass.cc.o"
+},
+{
+  "directory": "/Users/catkin/Study/compilers/build",
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -o CMakeFiles/lox.dir/src/LoxFunction.cc.o -c /Users/catkin/Study/compilers/src/LoxFunction.cc",
   "file": "/Users/catkin/Study/compilers/src/LoxFunction.cc",
   "output": "CMakeFiles/lox.dir/src/LoxFunction.cc.o"
+},
+{
+  "directory": "/Users/catkin/Study/compilers/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/catkin/Study/compilers/src -I/Users/catkin/Study/compilers/src/include -I/Users/catkin/Study/compilers/test/include -I/Users/catkin/Study/compilers/third_party -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fPIC -o CMakeFiles/lox.dir/src/LoxInstance.cc.o -c /Users/catkin/Study/compilers/src/LoxInstance.cc",
+  "file": "/Users/catkin/Study/compilers/src/LoxInstance.cc",
+  "output": "CMakeFiles/lox.dir/src/LoxInstance.cc.o"
 },
 {
   "directory": "/Users/catkin/Study/compilers/build",

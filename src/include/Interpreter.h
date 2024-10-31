@@ -28,6 +28,10 @@ class Interpreter : public Visitor<Object>,
     auto visitAssignmentExpr(AssignmentExpressionRef<Object> expr) -> Object;
     auto visitLogicalExpr(LogicalExpressionRef<Object> expr) -> Object;
     auto visitCallExpr(CallExpressionRef<Object> expr) -> Object;
+    auto visitGetExpr(GetExpressionRef<Object> expr) -> Object;
+    auto visitSetExpr(SetExpressionRef<Object> expr) -> Object;
+    auto visitThisExpr(ThisExpressionRef<Object> expr) -> Object;
+
     auto evaluate(AbstractExpressionRef<Object> expr) -> Object;
 
     auto visitExpressionStmt(ExpressionStmtRef stmt) -> void;
@@ -38,6 +42,8 @@ class Interpreter : public Visitor<Object>,
     auto visitWhileStmt(WhileStmtRef stmt) -> void;
     auto visitFunStmt(FunStmtRef stmt) -> void;
     auto visitReturnStmt(ReturnStmtRef stmt) -> void;
+    auto visitClassStmt(ClassStmtRef stmt) -> void;
+
     auto evaluate(StmtRef stmt) -> void;
 
     auto execute(StmtRef stmt) -> void;

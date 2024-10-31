@@ -421,6 +421,30 @@ src/Lox.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Lox.cc.s
 .PHONY : src/Lox.cc.s
 
+src/LoxClass.o: src/LoxClass.cc.o
+.PHONY : src/LoxClass.o
+
+# target to build an object file
+src/LoxClass.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxClass.cc.o
+.PHONY : src/LoxClass.cc.o
+
+src/LoxClass.i: src/LoxClass.cc.i
+.PHONY : src/LoxClass.i
+
+# target to preprocess a source file
+src/LoxClass.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxClass.cc.i
+.PHONY : src/LoxClass.cc.i
+
+src/LoxClass.s: src/LoxClass.cc.s
+.PHONY : src/LoxClass.s
+
+# target to generate assembly for a file
+src/LoxClass.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxClass.cc.s
+.PHONY : src/LoxClass.cc.s
+
 src/LoxFunction.o: src/LoxFunction.cc.o
 .PHONY : src/LoxFunction.o
 
@@ -444,6 +468,30 @@ src/LoxFunction.s: src/LoxFunction.cc.s
 src/LoxFunction.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxFunction.cc.s
 .PHONY : src/LoxFunction.cc.s
+
+src/LoxInstance.o: src/LoxInstance.cc.o
+.PHONY : src/LoxInstance.o
+
+# target to build an object file
+src/LoxInstance.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxInstance.cc.o
+.PHONY : src/LoxInstance.cc.o
+
+src/LoxInstance.i: src/LoxInstance.cc.i
+.PHONY : src/LoxInstance.i
+
+# target to preprocess a source file
+src/LoxInstance.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxInstance.cc.i
+.PHONY : src/LoxInstance.cc.i
+
+src/LoxInstance.s: src/LoxInstance.cc.s
+.PHONY : src/LoxInstance.s
+
+# target to generate assembly for a file
+src/LoxInstance.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxInstance.cc.s
+.PHONY : src/LoxInstance.cc.s
 
 src/Object.o: src/Object.cc.o
 .PHONY : src/Object.o
@@ -675,9 +723,15 @@ help:
 	@echo "... src/Lox.o"
 	@echo "... src/Lox.i"
 	@echo "... src/Lox.s"
+	@echo "... src/LoxClass.o"
+	@echo "... src/LoxClass.i"
+	@echo "... src/LoxClass.s"
 	@echo "... src/LoxFunction.o"
 	@echo "... src/LoxFunction.i"
 	@echo "... src/LoxFunction.s"
+	@echo "... src/LoxInstance.o"
+	@echo "... src/LoxInstance.i"
+	@echo "... src/LoxInstance.s"
 	@echo "... src/Object.o"
 	@echo "... src/Object.i"
 	@echo "... src/Object.s"

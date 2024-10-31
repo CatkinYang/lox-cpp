@@ -13,8 +13,12 @@ using LoxFunctionRef = std::shared_ptr<LoxFunction>;
 class LoxFunction : public LoxCallable,
                     public std::enable_shared_from_this<LoxFunction> {
   public:
-    explicit LoxFunction(FunStmtRef declaration, EnvironmentRef closure)
-        : m_declaration(declaration), m_closure(closure) {};
+    explicit LoxFunction(FunStmtRef declaration, EnvironmentRef closure,
+                         bool isInitializer)
+        : m_declaration(declaration), m_closure(closure),
+          m_isInitializer(isInitializer) {};
+
+    auto bind(LoxInstanceRef instance) -> LoxFunctionRef;
 
     auto call(InterpreterRef interpreter, std::vector<ObjectRef> arguments)
         -> ObjectRef override;
@@ -28,6 +32,7 @@ class LoxFunction : public LoxCallable,
   private:
     FunStmtRef m_declaration;
     EnvironmentRef m_closure;
+    bool m_isInitializer;
 };
 
 } // namespace lox

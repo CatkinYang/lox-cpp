@@ -31,20 +31,24 @@ auto Parser::statement() -> StmtRef {
         return std::dynamic_pointer_cast<Stmt>(returnStatement());
 
     if (match(WHILE))
-
         return std::dynamic_pointer_cast<Stmt>(whileStatement());
 
     if (match(LEFT_BRACE)) {
         auto blockStmt = std::make_shared<BlockStmt>(block());
         return std::dynamic_pointer_cast<Stmt>(blockStmt);
     }
+
     return std::dynamic_pointer_cast<Stmt>(expressionStatment());
 }
 
 auto Parser::declaration() -> StmtRef {
     try {
-        if (match(FUN))
+        if (match(CLASS)) {
+            return classDeclaration();
+        }
+        if (match(FUN)) {
             return function("function");
+        }
         if (match(VAR)) {
             return varDeclaration();
         }
@@ -64,7 +68,6 @@ auto Parser::varDeclaration() -> StmtRef {
     consume(SEMICOLON, "Exprect ':' after variable declaration.");
     auto var_stmt = std::make_shared<VarStmt>(name, initializer);
     return var_stmt;
-    // return std::dynamic_pointer_cast<Stmt>(varRes);
 }
 
 auto Parser::function(std::string kind) -> StmtRef {
@@ -84,6 +87,21 @@ auto Parser::function(std::string kind) -> StmtRef {
     std::vector<StmtRef> body = block();
     auto fun_stmt = std::make_shared<FunStmt>(name, parameters, body);
     return fun_stmt;
+}
+
+auto Parser::classDeclaration() -> StmtRef {
+    auto name = consume(IDENTIFIER, "Expect class name.");
+    consume(LEFT_BRACE, "Expect '{' before class body.");
+    std::vector<FunStmtRef> methods;
+    while (!check(RIGHT_BRACE) && !isAtEnd()) {
+        methods.push_back(
+            std::dynamic_pointer_cast<FunStmt>(function("method")));
+    }
+
+    consume(RIGHT_BRACE, "Expect '}' after class body.");
+
+    auto class_stmt = std::make_shared<ClassStmt>(name, methods);
+    return class_stmt;
 }
 
 auto Parser::printStatement() -> StmtRef {
@@ -197,6 +215,7 @@ auto Parser::assignment() -> AbstractExpressionRef<Object> {
                 std::make_shared<AssignmentExpression<Object>>(name, value);
             return res;
         }
+
         error(equals, "Invalid assignment target.");
     }
     return expr;
@@ -290,6 +309,10 @@ auto Parser::call() -> AbstractExpressionRef<Object> {
     while (true) {
         if (match(LEFT_PAREN)) {
             expr = finishCall(expr);
+        } else if (match(DOT)) {
+            auto name = consume(IDENTIFIER, "Expect property name after '.'.");
+            auto getExpr = std::make_shared<GetExpression<Object>>(expr, name);
+            expr = getExpr;
         } else {
             break;
         }
@@ -348,6 +371,12 @@ auto Parser::primary() -> AbstractExpressionRef<Object> {
         auto res = std::static_pointer_cast<AbstractExpression<Object>>(
             pre_literal_expr);
         return res;
+    }
+
+    if (match(THIS)) {
+        auto this_obj = previous();
+        auto this_expr = std::make_shared<ThisExpression<Object>>(this_obj);
+        return std::static_pointer_cast<AbstractExpression<Object>>(this_expr);
     }
 
     if (match(IDENTIFIER)) {

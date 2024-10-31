@@ -117,7 +117,9 @@ add_library(
   ${PROJECT_SOURCE_DIR}/src/Expression.cc
   ${PROJECT_SOURCE_DIR}/src/Interpreter.cc
   ${PROJECT_SOURCE_DIR}/src/Lox.cc
+  ${PROJECT_SOURCE_DIR}/src/LoxClass.cc
   ${PROJECT_SOURCE_DIR}/src/LoxFunction.cc
+  ${PROJECT_SOURCE_DIR}/src/LoxInstance.cc
   ${PROJECT_SOURCE_DIR}/src/Object.cc
   ${PROJECT_SOURCE_DIR}/src/Parser.cc
   ${PROJECT_SOURCE_DIR}/src/Resolver.cc

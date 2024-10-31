@@ -7,6 +7,16 @@
 
 namespace lox {
 
+auto LoxFunction::bind(LoxInstanceRef instance) -> LoxFunctionRef {
+    auto env = std::make_shared<Environment>(m_closure);
+    auto instance_obj = Object::make_instance_obj(instance);
+    auto instance_ref = std::make_shared<Object>(instance_obj);
+    env->define("this", instance_ref);
+    auto res =
+        std::make_shared<LoxFunction>(m_declaration, env, m_isInitializer);
+    return res;
+}
+
 auto LoxFunction::call(InterpreterRef interpreter,
                        std::vector<ObjectRef> arguments) -> ObjectRef {
 
@@ -20,7 +30,13 @@ auto LoxFunction::call(InterpreterRef interpreter,
     try {
         interpreter->executeBlock(m_declaration->getBody(), environment);
     } catch (ReturnError return_value) {
+        if (m_isInitializer) {
+            return m_closure->getAt(0, "this");
+        }
         return std::make_shared<Object>(return_value.value);
+    }
+    if (m_isInitializer) {
+        return m_closure->getAt(0, "this");
     }
 
     return nullptr;

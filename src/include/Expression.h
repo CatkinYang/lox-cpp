@@ -14,6 +14,9 @@ template <class R> class VariableExpression;
 template <class R> class AssignmentExpression;
 template <class R> class LogicalExpression;
 template <class R> class CallExpression;
+template <class R> class GetExpression;
+template <class R> class SetExpression;
+template <class R> class ThisExpression;
 
 template <class R>
 using AbstractExpressionRef = std::shared_ptr<AbstractExpression<R>>;
@@ -31,7 +34,11 @@ template <class R>
 using AssignmentExpressionRef = std::shared_ptr<AssignmentExpression<R>>;
 template <class R>
 using LogicalExpressionRef = std::shared_ptr<LogicalExpression<R>>;
+
 template <class R> using CallExpressionRef = std::shared_ptr<CallExpression<R>>;
+template <class R> using GetExpressionRef = std::shared_ptr<GetExpression<R>>;
+template <class R> using SetExpressionRef = std::shared_ptr<SetExpression<R>>;
+template <class R> using ThisExpressionRef = std::shared_ptr<ThisExpression<R>>;
 
 // 抽象访问者
 template <class R> class Visitor {
@@ -46,6 +53,9 @@ template <class R> class Visitor {
     virtual R visitAssignmentExpr(AssignmentExpressionRef<R> expr) = 0;
     virtual R visitLogicalExpr(LogicalExpressionRef<R> expr) = 0;
     virtual R visitCallExpr(CallExpressionRef<R> expr) = 0;
+    virtual R visitGetExpr(GetExpressionRef<R> expr) = 0;
+    virtual R visitSetExpr(SetExpressionRef<R> expr) = 0;
+    virtual R visitThisExpr(ThisExpressionRef<R> expr) = 0;
 };
 
 template <class R> using VisitorRef = std::shared_ptr<Visitor<R>>;
@@ -199,8 +209,59 @@ class CallExpression : public AbstractExpression<R>,
     std::vector<AbstractExpressionRef<R>> m_arguments;
 };
 
+template <class R>
+class GetExpression : public AbstractExpression<R>,
+                      public std::enable_shared_from_this<GetExpression<R>> {
+  public:
+    explicit GetExpression(AbstractExpressionRef<R> object, TokenRef name)
+        : m_object(object), m_name(name) {};
+
+    auto accept(VisitorRef<R>) -> R override;
+
+    auto getObject() { return m_object; }
+    auto getName() { return m_name; }
+
+  private:
+    AbstractExpressionRef<R> m_object;
+    TokenRef m_name;
+};
+
+template <class R>
+class SetExpression : public AbstractExpression<R>,
+                      public std::enable_shared_from_this<SetExpression<R>> {
+  public:
+    explicit SetExpression(AbstractExpressionRef<R> object, TokenRef name,
+                           AbstractExpressionRef<R> value)
+        : m_object(object), m_name(name), m_value(value) {};
+
+    auto accept(VisitorRef<R>) -> R override;
+
+    auto getObject() { return m_object; }
+    auto getName() { return m_name; }
+    auto getValue() { return m_value; }
+
+  private:
+    AbstractExpressionRef<R> m_object;
+    TokenRef m_name;
+    AbstractExpressionRef<R> m_value;
+};
+
+template <class R>
+class ThisExpression : public AbstractExpression<R>,
+                       public std::enable_shared_from_this<ThisExpression<R>> {
+  public:
+    explicit ThisExpression(TokenRef keyword) : m_keyword(keyword) {};
+
+    auto accept(VisitorRef<R>) -> R override;
+
+    auto getKeyword() { return m_keyword; }
+
+  private:
+    TokenRef m_keyword;
+};
+
 // template <class R>
-// class Expression : public Expression<R>,
+// class Expression : public AbstractExpression<R>,
 //                    public std::enable_shared_from_this<Expression<R>> {
 //   public:
 //     explicit Expression();

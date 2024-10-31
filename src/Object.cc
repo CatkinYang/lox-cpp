@@ -52,4 +52,18 @@ Object Object::make_fun_obj(LoxCallableRef function) {
     return fun_obj;
 }
 
+Object Object::make_instance_obj(LoxInstanceRef instance) {
+    Object instance_obj;
+    instance_obj.m_type = Object_instance;
+    instance_obj.m_instance = instance;
+    return instance_obj;
+}
+
+Object Object::make_class_obj(LoxClassRef klass) {
+    Object klass_obj;
+    klass_obj.m_type = Object_class;
+    klass_obj.m_class = klass;
+    return klass_obj;
+}
+
 } // namespace lox

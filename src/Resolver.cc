@@ -1,4 +1,5 @@
 #include "Resolver.h"
+#include "Expression.h"
 #include "Lox.h"
 #include "Object.h"
 #include "Parser.h"
@@ -115,6 +116,11 @@ auto Resolver::visitReturnStmt(ReturnStmtRef stmt) -> void {
         lox.error(stmt->getKeyword(), "Can't return from top-level code.");
     }
     if (stmt->getValue() != nullptr) {
+        if (current_function == FunctionType::INITIALIZER) {
+            lox.error(stmt->getKeyword(),
+                      "Can't return a value from an initializer.");
+        }
+
         resolve(stmt->getValue());
     }
     return;
@@ -123,6 +129,28 @@ auto Resolver::visitReturnStmt(ReturnStmtRef stmt) -> void {
 auto Resolver::visitWhileStmt(WhileStmtRef stmt) -> void {
     resolve(stmt->getCondition());
     resolve(stmt->getBody());
+    return;
+}
+
+auto Resolver::visitClassStmt(ClassStmtRef stmt) -> void {
+    ClassType enclosingClass = current_class;
+    current_class = ClassType::CLASS;
+    declare(stmt->getName());
+    define(stmt->getName());
+
+    beginScope();
+    m_scopes.back().insert({"this", true});
+
+    for (auto &method : stmt->getMethods()) {
+        FunctionType declaration = FunctionType::METHOD;
+        if (method->getName()->getLexeme() == "init") {
+            declaration = FunctionType::INITIALIZER;
+        }
+
+        resolveFun(method, declaration);
+    }
+    endScope();
+    current_class = enclosingClass;
     return;
 }
 
@@ -178,6 +206,26 @@ auto Resolver::visitLogicalExpr(LogicalExpressionRef<Object> expr) -> Object {
 
 auto Resolver::visitUnaryExpr(UnaryExpressionRef<Object> expr) -> Object {
     resolve(expr->getRightExpr());
+    return Object::make_nil_obj();
+}
+
+auto Resolver::visitGetExpr(GetExpressionRef<Object> expr) -> Object {
+    resolve(expr->getObject());
+    return Object::make_nil_obj();
+}
+
+auto Resolver::visitSetExpr(SetExpressionRef<Object> expr) -> Object {
+    resolve(expr->getValue());
+    resolve(expr->getObject());
+    return Object::make_nil_obj();
+}
+
+auto Resolver::visitThisExpr(ThisExpressionRef<Object> expr) -> Object {
+    if (current_class == ClassType::NONE) {
+        lox.error(expr->getKeyword(), "Can't use 'this' outside of a class.");
+        return Object::make_nil_obj();
+    }
+    resolveLocal(expr, expr->getKeyword());
     return Object::make_nil_obj();
 }
 

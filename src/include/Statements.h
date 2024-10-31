@@ -17,6 +17,7 @@ class WhileStmt;
 class ForStmt;
 class FunStmt;
 class ReturnStmt;
+class ClassStmt;
 
 using StmtRef = std::shared_ptr<Stmt>;
 using ExpressionStmtRef = std::shared_ptr<ExpressionStmt>;
@@ -28,6 +29,7 @@ using WhileStmtRef = std::shared_ptr<WhileStmt>;
 using ForStmtRef = std::shared_ptr<ForStmt>;
 using FunStmtRef = std::shared_ptr<FunStmt>;
 using ReturnStmtRef = std::shared_ptr<ReturnStmt>;
+using ClassStmtRef = std::shared_ptr<ClassStmt>;
 
 class StmtVisitor {
   public:
@@ -40,6 +42,7 @@ class StmtVisitor {
     virtual void visitWhileStmt(WhileStmtRef stmt) = 0;
     virtual void visitFunStmt(FunStmtRef stmt) = 0;
     virtual void visitReturnStmt(ReturnStmtRef stmt) = 0;
+    virtual void visitClassStmt(ClassStmtRef stmt) = 0;
 };
 using StmtVistiorRef = std::shared_ptr<StmtVisitor>;
 
@@ -165,6 +168,21 @@ class ReturnStmt : public Stmt,
   private:
     TokenRef m_keyword;
     AbstractExpressionRef<Object> m_value;
+};
+
+class ClassStmt : public Stmt, public std::enable_shared_from_this<ClassStmt> {
+  public:
+    ClassStmt(TokenRef name, std::vector<FunStmtRef> methods)
+        : m_name(name), m_methods(methods) {};
+
+    virtual void accept(StmtVistiorRef visitor) override;
+
+    auto getName() { return m_name; }
+    auto getMethods() { return m_methods; }
+
+  private:
+    TokenRef m_name;
+    std::vector<FunStmtRef> m_methods;
 };
 
 // class Stmt : public Stmt, public std::enable_shared_from_this<Stmt> {

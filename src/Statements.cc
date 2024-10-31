@@ -34,4 +34,8 @@ void ReturnStmt::accept(StmtVistiorRef visitor) {
     visitor->visitReturnStmt(shared_from_this());
 }
 
+void ClassStmt::accept(StmtVistiorRef visitor) {
+    visitor->visitClassStmt(shared_from_this());
+}
+
 } // namespace lox

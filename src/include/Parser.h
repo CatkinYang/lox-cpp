@@ -20,6 +20,7 @@ class Parser {
     auto statement() -> StmtRef;
     auto declaration() -> StmtRef;
     auto varDeclaration() -> StmtRef;
+    auto classDeclaration() -> StmtRef;
     auto function(std::string kind) -> StmtRef;
 
     auto printStatement() -> StmtRef;

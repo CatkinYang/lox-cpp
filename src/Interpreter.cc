@@ -2,6 +2,7 @@
 #include "Lox.h"
 #include "LoxCallable.h"
 #include "LoxFunction.h"
+#include "LoxInstance.h"
 #include "Object.h"
 #include "Return.h"
 #include "RuntimeError.h"
@@ -10,6 +11,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 namespace lox {
 
@@ -114,7 +116,6 @@ auto Interpreter::visitAssignmentExpr(AssignmentExpressionRef<Object> expr)
     } else {
         globals->assign(expr->getName(), valueRef);
     }
-
     return value;
 }
 
@@ -154,6 +155,29 @@ auto Interpreter::visitCallExpr(CallExpressionRef<Object> expr) -> Object {
     return *function->call(shared_from_this(), arguments).get();
 }
 
+auto Interpreter::visitGetExpr(GetExpressionRef<Object> expr) -> Object {
+    auto obj = evaluate(expr->getObject());
+    if (obj.getType() == Object::Object_instance) {
+        auto name = expr->getName();
+        return *((obj.getInstance())->get(expr->getName())).get();
+        // return res;
+    }
+
+    throw RuntimeError(expr->getName(), "Only instances have properties.");
+}
+
+auto Interpreter::visitSetExpr(SetExpressionRef<Object> expr) -> Object {
+    auto object = evaluate(expr->getObject());
+
+    if (!(object.getType() != Object::Object_instance)) {
+        throw RuntimeError(expr->getName(), "Only instances have fields.");
+    }
+    auto value = evaluate(expr->getValue());
+    auto value_obj = std::make_shared<Object>(value);
+    object.getInstance()->set(expr->getName(), value_obj);
+    return value;
+}
+
 auto Interpreter::evaluate(AbstractExpressionRef<Object> expr) -> Object {
     return expr->accept(shared_from_this());
 }
@@ -167,6 +191,11 @@ auto Interpreter::lookUpVariable(TokenRef name,
         return *globals->get(name).get();
     }
 }
+
+auto Interpreter::visitThisExpr(ThisExpressionRef<Object> expr) -> Object {
+    return lookUpVariable(expr->getKeyword(), expr);
+}
+
 /*******************************************************************/
 /*         Statements      */
 /*******************************************************************/
@@ -214,7 +243,7 @@ auto Interpreter::visitWhileStmt(WhileStmtRef stmt) -> void {
 }
 
 auto Interpreter::visitFunStmt(FunStmtRef stmt) -> void {
-    auto function = std::make_shared<LoxFunction>(stmt, m_env);
+    auto function = std::make_shared<LoxFunction>(stmt, m_env, false);
     auto fun_obj =
         Object::make_fun_obj(std::dynamic_pointer_cast<LoxCallable>(function));
     auto fun_obj_ref = std::make_shared<Object>(fun_obj);
@@ -228,6 +257,23 @@ auto Interpreter::visitReturnStmt(ReturnStmtRef stmt) -> void {
         value = evaluate(stmt->getValue());
     }
     throw ReturnError(value);
+}
+
+auto Interpreter::visitClassStmt(ClassStmtRef stmt) -> void {
+    m_env->define(stmt->getName()->getLexeme(), nullptr);
+    std::unordered_map<std::string, LoxFunctionRef> methods;
+    for (auto &method : stmt->getMethods()) {
+        bool tmp = (method->getName()->getLexeme() == "init");
+        auto fun = std::make_shared<LoxFunction>(method, m_env, tmp);
+        methods.insert({method->getName()->getLexeme(), fun});
+    }
+
+    auto klass =
+        std::make_shared<LoxClass>(stmt->getName()->getLexeme(), methods);
+    auto klass_obj = Object::make_class_obj(klass);
+    auto klass_obj_ref = std::make_shared<Object>(klass_obj);
+    m_env->assign(stmt->getName(), klass_obj_ref);
+    return;
 }
 
 auto Interpreter::evaluate(StmtRef stmt) -> void {
@@ -257,6 +303,8 @@ auto Interpreter::resolve(AbstractExpressionRef<Object> expr, int depth)
     m_locals.insert({expr, depth});
 }
 
+/*******************************************************************/
+/*         */
 /*******************************************************************/
 
 auto Interpreter::isTruthy(Object obj) -> bool {
