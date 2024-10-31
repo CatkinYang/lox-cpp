@@ -1,5 +1,5 @@
-#include "Expression.h"
-#include "Object.h"
+#include "Interpreter/Expression.h"
+#include "Interpreter/Object.h"
 #include <string>
 
 namespace lox {

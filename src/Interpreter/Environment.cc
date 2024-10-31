@@ -1,6 +1,6 @@
-#include "Environment.h"
-#include "RuntimeError.h"
-#include "Token.h"
+#include "Interpreter/Environment.h"
+#include "Interpreter/RuntimeError.h"
+#include "Interpreter/Token.h"
 #include <memory>
 
 namespace lox {

@@ -1,4 +1,5 @@
-#include "include/Tokentype.h"
+#include "Interpreter/Tokentype.h"
+
 #include <string>
 #include <unordered_map>
 

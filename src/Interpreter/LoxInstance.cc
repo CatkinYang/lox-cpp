@@ -1,7 +1,8 @@
-#include "LoxInstance.h"
-#include "Object.h"
-#include "RuntimeError.h"
-#include "Token.h"
+#include "Interpreter/LoxInstance.h"
+#include "Interpreter/Object.h"
+#include "Interpreter/RuntimeError.h"
+#include "Interpreter/Token.h"
+
 #include <memory>
 
 namespace lox {

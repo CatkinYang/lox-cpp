@@ -1,6 +1,6 @@
-#include "LoxClass.h"
-#include "LoxInstance.h"
-#include "Object.h"
+#include "Interpreter/LoxClass.h"
+#include "Interpreter/LoxInstance.h"
+#include "Interpreter/Object.h"
 #include <memory>
 
 namespace lox {

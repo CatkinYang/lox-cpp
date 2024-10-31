@@ -1,7 +1,7 @@
 
-#include "AstPrinter.h"
-#include "Parser.h"
-#include "Scanner.h"
+#include "Interpreter/AstPrinter.h"
+#include "Interpreter/Parser.h"
+#include "Interpreter/Scanner.h"
 #include "gtest/gtest.h"
 #include <memory>
 

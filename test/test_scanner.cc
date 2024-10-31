@@ -1,4 +1,4 @@
-#include "Scanner.h"
+#include "Interpreter/Scanner.h"
 #include "gtest/gtest.h"
 #include <ostream>
 

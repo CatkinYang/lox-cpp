@@ -1,4 +1,3 @@
-/Users/catkin/Study/compilers/build/CMakeFiles/lox.dir
 /Users/catkin/Study/compilers/build/CMakeFiles/test.dir
 /Users/catkin/Study/compilers/build/CMakeFiles/edit_cache.dir
 /Users/catkin/Study/compilers/build/CMakeFiles/rebuild_cache.dir
@@ -38,6 +37,7 @@
 /Users/catkin/Study/compilers/build/third_party/googletest/googletest/CMakeFiles/install.dir
 /Users/catkin/Study/compilers/build/third_party/googletest/googletest/CMakeFiles/install/local.dir
 /Users/catkin/Study/compilers/build/third_party/googletest/googletest/CMakeFiles/install/strip.dir
+/Users/catkin/Study/compilers/build/src/CMakeFiles/lox.dir
 /Users/catkin/Study/compilers/build/src/CMakeFiles/test.dir
 /Users/catkin/Study/compilers/build/src/CMakeFiles/edit_cache.dir
 /Users/catkin/Study/compilers/build/src/CMakeFiles/rebuild_cache.dir
@@ -45,6 +45,14 @@
 /Users/catkin/Study/compilers/build/src/CMakeFiles/install.dir
 /Users/catkin/Study/compilers/build/src/CMakeFiles/install/local.dir
 /Users/catkin/Study/compilers/build/src/CMakeFiles/install/strip.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/lox_interpreter.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/test.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/edit_cache.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/rebuild_cache.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/list_install_components.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/install.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/install/local.dir
+/Users/catkin/Study/compilers/build/src/Interpreter/CMakeFiles/install/strip.dir
 /Users/catkin/Study/compilers/build/test/CMakeFiles/build-tests.dir
 /Users/catkin/Study/compilers/build/test/CMakeFiles/test_astprinter.dir
 /Users/catkin/Study/compilers/build/test/CMakeFiles/test_leaks.dir

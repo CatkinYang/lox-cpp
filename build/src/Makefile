@@ -171,6 +171,20 @@ depend:
 	cd /Users/catkin/Study/compilers/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+src/CMakeFiles/lox.dir/rule:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/lox.dir/rule
+.PHONY : src/CMakeFiles/lox.dir/rule
+
+# Convenience name for target.
+lox: src/CMakeFiles/lox.dir/rule
+.PHONY : lox
+
+# fast build rule for target.
+lox/fast:
+	cd /Users/catkin/Study/compilers/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/lox.dir/build.make src/CMakeFiles/lox.dir/build
+.PHONY : lox/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -184,6 +198,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... lox"
 .PHONY : help
 
 

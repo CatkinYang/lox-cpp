@@ -1,7 +1,8 @@
-#include "LoxFunction.h"
-#include "Environment.h"
-#include "Object.h"
-#include "Return.h"
+#include "Interpreter/LoxFunction.h"
+#include "Interpreter/Environment.h"
+#include "Interpreter/Object.h"
+#include "Interpreter/Return.h"
+
 #include <cstddef>
 #include <memory>
 

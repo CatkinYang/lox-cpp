@@ -1,9 +1,9 @@
-#include "include/Lox.h"
-#include "Interpreter.h"
-#include "Parser.h"
-#include "Resolver.h"
-#include "Scanner.h"
-#include "Tokentype.h"
+#include "Interpreter/Lox.h"
+#include "Interpreter/Interpreter.h"
+#include "Interpreter/Parser.h"
+#include "Interpreter/Resolver.h"
+#include "Interpreter/Scanner.h"
+#include "Interpreter/Tokentype.h"
 
 #include <cstdlib>
 #include <filesystem>

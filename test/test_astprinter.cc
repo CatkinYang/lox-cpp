@@ -1,8 +1,8 @@
-#include "AstPrinter.h"
-#include "Expression.h"
-#include "Object.h"
-#include "Token.h"
-#include "Tokentype.h"
+#include "Interpreter/AstPrinter.h"
+#include "Interpreter/Expression.h"
+#include "Interpreter/Object.h"
+#include "Interpreter/Token.h"
+#include "Interpreter/Tokentype.h"
 #include "gtest/gtest.h"
 #include <memory>
 #include <string>

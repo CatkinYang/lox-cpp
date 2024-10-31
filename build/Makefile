@@ -172,19 +172,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lox
-
-# Build rule for target.
-lox: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lox
-.PHONY : lox
-
-# fast build rule for target.
-lox/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/build
-.PHONY : lox/fast
-
-#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -235,6 +222,32 @@ gtest_main: cmake_check_build_system
 gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googletest/CMakeFiles/gtest_main.dir/build.make third_party/googletest/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
+
+#=============================================================================
+# Target rules for targets named lox
+
+# Build rule for target.
+lox: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lox
+.PHONY : lox
+
+# fast build rule for target.
+lox/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/lox.dir/build.make src/CMakeFiles/lox.dir/build
+.PHONY : lox/fast
+
+#=============================================================================
+# Target rules for targets named lox_interpreter
+
+# Build rule for target.
+lox_interpreter: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lox_interpreter
+.PHONY : lox_interpreter
+
+# fast build rule for target.
+lox_interpreter/fast:
+	$(MAKE) $(MAKESILENT) -f src/Interpreter/CMakeFiles/lox_interpreter.dir/build.make src/Interpreter/CMakeFiles/lox_interpreter.dir/build
+.PHONY : lox_interpreter/fast
 
 #=============================================================================
 # Target rules for targets named build-tests
@@ -301,390 +314,6 @@ test_scanner/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_scanner.dir/build.make test/CMakeFiles/test_scanner.dir/build
 .PHONY : test_scanner/fast
 
-src/AstPrinter.o: src/AstPrinter.cc.o
-.PHONY : src/AstPrinter.o
-
-# target to build an object file
-src/AstPrinter.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/AstPrinter.cc.o
-.PHONY : src/AstPrinter.cc.o
-
-src/AstPrinter.i: src/AstPrinter.cc.i
-.PHONY : src/AstPrinter.i
-
-# target to preprocess a source file
-src/AstPrinter.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/AstPrinter.cc.i
-.PHONY : src/AstPrinter.cc.i
-
-src/AstPrinter.s: src/AstPrinter.cc.s
-.PHONY : src/AstPrinter.s
-
-# target to generate assembly for a file
-src/AstPrinter.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/AstPrinter.cc.s
-.PHONY : src/AstPrinter.cc.s
-
-src/Environment.o: src/Environment.cc.o
-.PHONY : src/Environment.o
-
-# target to build an object file
-src/Environment.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Environment.cc.o
-.PHONY : src/Environment.cc.o
-
-src/Environment.i: src/Environment.cc.i
-.PHONY : src/Environment.i
-
-# target to preprocess a source file
-src/Environment.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Environment.cc.i
-.PHONY : src/Environment.cc.i
-
-src/Environment.s: src/Environment.cc.s
-.PHONY : src/Environment.s
-
-# target to generate assembly for a file
-src/Environment.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Environment.cc.s
-.PHONY : src/Environment.cc.s
-
-src/Expression.o: src/Expression.cc.o
-.PHONY : src/Expression.o
-
-# target to build an object file
-src/Expression.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Expression.cc.o
-.PHONY : src/Expression.cc.o
-
-src/Expression.i: src/Expression.cc.i
-.PHONY : src/Expression.i
-
-# target to preprocess a source file
-src/Expression.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Expression.cc.i
-.PHONY : src/Expression.cc.i
-
-src/Expression.s: src/Expression.cc.s
-.PHONY : src/Expression.s
-
-# target to generate assembly for a file
-src/Expression.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Expression.cc.s
-.PHONY : src/Expression.cc.s
-
-src/Interpreter.o: src/Interpreter.cc.o
-.PHONY : src/Interpreter.o
-
-# target to build an object file
-src/Interpreter.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Interpreter.cc.o
-.PHONY : src/Interpreter.cc.o
-
-src/Interpreter.i: src/Interpreter.cc.i
-.PHONY : src/Interpreter.i
-
-# target to preprocess a source file
-src/Interpreter.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Interpreter.cc.i
-.PHONY : src/Interpreter.cc.i
-
-src/Interpreter.s: src/Interpreter.cc.s
-.PHONY : src/Interpreter.s
-
-# target to generate assembly for a file
-src/Interpreter.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Interpreter.cc.s
-.PHONY : src/Interpreter.cc.s
-
-src/Lox.o: src/Lox.cc.o
-.PHONY : src/Lox.o
-
-# target to build an object file
-src/Lox.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Lox.cc.o
-.PHONY : src/Lox.cc.o
-
-src/Lox.i: src/Lox.cc.i
-.PHONY : src/Lox.i
-
-# target to preprocess a source file
-src/Lox.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Lox.cc.i
-.PHONY : src/Lox.cc.i
-
-src/Lox.s: src/Lox.cc.s
-.PHONY : src/Lox.s
-
-# target to generate assembly for a file
-src/Lox.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Lox.cc.s
-.PHONY : src/Lox.cc.s
-
-src/LoxClass.o: src/LoxClass.cc.o
-.PHONY : src/LoxClass.o
-
-# target to build an object file
-src/LoxClass.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxClass.cc.o
-.PHONY : src/LoxClass.cc.o
-
-src/LoxClass.i: src/LoxClass.cc.i
-.PHONY : src/LoxClass.i
-
-# target to preprocess a source file
-src/LoxClass.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxClass.cc.i
-.PHONY : src/LoxClass.cc.i
-
-src/LoxClass.s: src/LoxClass.cc.s
-.PHONY : src/LoxClass.s
-
-# target to generate assembly for a file
-src/LoxClass.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxClass.cc.s
-.PHONY : src/LoxClass.cc.s
-
-src/LoxFunction.o: src/LoxFunction.cc.o
-.PHONY : src/LoxFunction.o
-
-# target to build an object file
-src/LoxFunction.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxFunction.cc.o
-.PHONY : src/LoxFunction.cc.o
-
-src/LoxFunction.i: src/LoxFunction.cc.i
-.PHONY : src/LoxFunction.i
-
-# target to preprocess a source file
-src/LoxFunction.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxFunction.cc.i
-.PHONY : src/LoxFunction.cc.i
-
-src/LoxFunction.s: src/LoxFunction.cc.s
-.PHONY : src/LoxFunction.s
-
-# target to generate assembly for a file
-src/LoxFunction.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxFunction.cc.s
-.PHONY : src/LoxFunction.cc.s
-
-src/LoxInstance.o: src/LoxInstance.cc.o
-.PHONY : src/LoxInstance.o
-
-# target to build an object file
-src/LoxInstance.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxInstance.cc.o
-.PHONY : src/LoxInstance.cc.o
-
-src/LoxInstance.i: src/LoxInstance.cc.i
-.PHONY : src/LoxInstance.i
-
-# target to preprocess a source file
-src/LoxInstance.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxInstance.cc.i
-.PHONY : src/LoxInstance.cc.i
-
-src/LoxInstance.s: src/LoxInstance.cc.s
-.PHONY : src/LoxInstance.s
-
-# target to generate assembly for a file
-src/LoxInstance.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/LoxInstance.cc.s
-.PHONY : src/LoxInstance.cc.s
-
-src/Object.o: src/Object.cc.o
-.PHONY : src/Object.o
-
-# target to build an object file
-src/Object.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Object.cc.o
-.PHONY : src/Object.cc.o
-
-src/Object.i: src/Object.cc.i
-.PHONY : src/Object.i
-
-# target to preprocess a source file
-src/Object.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Object.cc.i
-.PHONY : src/Object.cc.i
-
-src/Object.s: src/Object.cc.s
-.PHONY : src/Object.s
-
-# target to generate assembly for a file
-src/Object.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Object.cc.s
-.PHONY : src/Object.cc.s
-
-src/Parser.o: src/Parser.cc.o
-.PHONY : src/Parser.o
-
-# target to build an object file
-src/Parser.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Parser.cc.o
-.PHONY : src/Parser.cc.o
-
-src/Parser.i: src/Parser.cc.i
-.PHONY : src/Parser.i
-
-# target to preprocess a source file
-src/Parser.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Parser.cc.i
-.PHONY : src/Parser.cc.i
-
-src/Parser.s: src/Parser.cc.s
-.PHONY : src/Parser.s
-
-# target to generate assembly for a file
-src/Parser.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Parser.cc.s
-.PHONY : src/Parser.cc.s
-
-src/Resolver.o: src/Resolver.cc.o
-.PHONY : src/Resolver.o
-
-# target to build an object file
-src/Resolver.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Resolver.cc.o
-.PHONY : src/Resolver.cc.o
-
-src/Resolver.i: src/Resolver.cc.i
-.PHONY : src/Resolver.i
-
-# target to preprocess a source file
-src/Resolver.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Resolver.cc.i
-.PHONY : src/Resolver.cc.i
-
-src/Resolver.s: src/Resolver.cc.s
-.PHONY : src/Resolver.s
-
-# target to generate assembly for a file
-src/Resolver.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Resolver.cc.s
-.PHONY : src/Resolver.cc.s
-
-src/RuntimeError.o: src/RuntimeError.cc.o
-.PHONY : src/RuntimeError.o
-
-# target to build an object file
-src/RuntimeError.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/RuntimeError.cc.o
-.PHONY : src/RuntimeError.cc.o
-
-src/RuntimeError.i: src/RuntimeError.cc.i
-.PHONY : src/RuntimeError.i
-
-# target to preprocess a source file
-src/RuntimeError.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/RuntimeError.cc.i
-.PHONY : src/RuntimeError.cc.i
-
-src/RuntimeError.s: src/RuntimeError.cc.s
-.PHONY : src/RuntimeError.s
-
-# target to generate assembly for a file
-src/RuntimeError.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/RuntimeError.cc.s
-.PHONY : src/RuntimeError.cc.s
-
-src/Scanner.o: src/Scanner.cc.o
-.PHONY : src/Scanner.o
-
-# target to build an object file
-src/Scanner.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Scanner.cc.o
-.PHONY : src/Scanner.cc.o
-
-src/Scanner.i: src/Scanner.cc.i
-.PHONY : src/Scanner.i
-
-# target to preprocess a source file
-src/Scanner.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Scanner.cc.i
-.PHONY : src/Scanner.cc.i
-
-src/Scanner.s: src/Scanner.cc.s
-.PHONY : src/Scanner.s
-
-# target to generate assembly for a file
-src/Scanner.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Scanner.cc.s
-.PHONY : src/Scanner.cc.s
-
-src/Statements.o: src/Statements.cc.o
-.PHONY : src/Statements.o
-
-# target to build an object file
-src/Statements.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Statements.cc.o
-.PHONY : src/Statements.cc.o
-
-src/Statements.i: src/Statements.cc.i
-.PHONY : src/Statements.i
-
-# target to preprocess a source file
-src/Statements.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Statements.cc.i
-.PHONY : src/Statements.cc.i
-
-src/Statements.s: src/Statements.cc.s
-.PHONY : src/Statements.s
-
-# target to generate assembly for a file
-src/Statements.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Statements.cc.s
-.PHONY : src/Statements.cc.s
-
-src/Token.o: src/Token.cc.o
-.PHONY : src/Token.o
-
-# target to build an object file
-src/Token.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Token.cc.o
-.PHONY : src/Token.cc.o
-
-src/Token.i: src/Token.cc.i
-.PHONY : src/Token.i
-
-# target to preprocess a source file
-src/Token.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Token.cc.i
-.PHONY : src/Token.cc.i
-
-src/Token.s: src/Token.cc.s
-.PHONY : src/Token.s
-
-# target to generate assembly for a file
-src/Token.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/Token.cc.s
-.PHONY : src/Token.cc.s
-
-src/TokenType.o: src/TokenType.cc.o
-.PHONY : src/TokenType.o
-
-# target to build an object file
-src/TokenType.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/TokenType.cc.o
-.PHONY : src/TokenType.cc.o
-
-src/TokenType.i: src/TokenType.cc.i
-.PHONY : src/TokenType.i
-
-# target to preprocess a source file
-src/TokenType.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/TokenType.cc.i
-.PHONY : src/TokenType.cc.i
-
-src/TokenType.s: src/TokenType.cc.s
-.PHONY : src/TokenType.s
-
-# target to generate assembly for a file
-src/TokenType.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lox.dir/build.make CMakeFiles/lox.dir/src/TokenType.cc.s
-.PHONY : src/TokenType.cc.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -704,58 +333,11 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... lox"
+	@echo "... lox_interpreter"
 	@echo "... test_astprinter"
 	@echo "... test_leaks"
 	@echo "... test_parser"
 	@echo "... test_scanner"
-	@echo "... src/AstPrinter.o"
-	@echo "... src/AstPrinter.i"
-	@echo "... src/AstPrinter.s"
-	@echo "... src/Environment.o"
-	@echo "... src/Environment.i"
-	@echo "... src/Environment.s"
-	@echo "... src/Expression.o"
-	@echo "... src/Expression.i"
-	@echo "... src/Expression.s"
-	@echo "... src/Interpreter.o"
-	@echo "... src/Interpreter.i"
-	@echo "... src/Interpreter.s"
-	@echo "... src/Lox.o"
-	@echo "... src/Lox.i"
-	@echo "... src/Lox.s"
-	@echo "... src/LoxClass.o"
-	@echo "... src/LoxClass.i"
-	@echo "... src/LoxClass.s"
-	@echo "... src/LoxFunction.o"
-	@echo "... src/LoxFunction.i"
-	@echo "... src/LoxFunction.s"
-	@echo "... src/LoxInstance.o"
-	@echo "... src/LoxInstance.i"
-	@echo "... src/LoxInstance.s"
-	@echo "... src/Object.o"
-	@echo "... src/Object.i"
-	@echo "... src/Object.s"
-	@echo "... src/Parser.o"
-	@echo "... src/Parser.i"
-	@echo "... src/Parser.s"
-	@echo "... src/Resolver.o"
-	@echo "... src/Resolver.i"
-	@echo "... src/Resolver.s"
-	@echo "... src/RuntimeError.o"
-	@echo "... src/RuntimeError.i"
-	@echo "... src/RuntimeError.s"
-	@echo "... src/Scanner.o"
-	@echo "... src/Scanner.i"
-	@echo "... src/Scanner.s"
-	@echo "... src/Statements.o"
-	@echo "... src/Statements.i"
-	@echo "... src/Statements.s"
-	@echo "... src/Token.o"
-	@echo "... src/Token.i"
-	@echo "... src/Token.s"
-	@echo "... src/TokenType.o"
-	@echo "... src/TokenType.i"
-	@echo "... src/TokenType.s"
 .PHONY : help
 
 

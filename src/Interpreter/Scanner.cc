@@ -1,8 +1,8 @@
-#include "include/Scanner.h"
-#include "Lox.h"
-#include "include/Object.h"
-#include "include/Token.h"
-#include "include/Tokentype.h"
+#include "Interpreter/Scanner.h"
+#include "Interpreter/Lox.h"
+#include "Interpreter/Object.h"
+#include "Interpreter/Token.h"
+#include "Interpreter/Tokentype.h"
 #include <cctype>
 #include <memory>
 #include <string>

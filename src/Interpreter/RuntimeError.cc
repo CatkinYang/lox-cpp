@@ -1,4 +1,4 @@
-#include "RuntimeError.h"
+#include "Interpreter/RuntimeError.h"
 #include <string>
 
 namespace lox {

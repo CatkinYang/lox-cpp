@@ -1,5 +1,5 @@
-#include "include/Token.h"
-#include "include/Tokentype.h"
+#include "Interpreter/Token.h"
+#include "Interpreter/Tokentype.h"
 
 namespace lox {
 auto Token::toString() -> std::string {

@@ -110,25 +110,6 @@ function(disable_target_warnings NAME)
   target_compile_options(${NAME} PRIVATE "-w")
 endfunction()
 
-add_library(
-  lox STATIC
-  ${PROJECT_SOURCE_DIR}/src/AstPrinter.cc
-  ${PROJECT_SOURCE_DIR}/src/Environment.cc
-  ${PROJECT_SOURCE_DIR}/src/Expression.cc
-  ${PROJECT_SOURCE_DIR}/src/Interpreter.cc
-  ${PROJECT_SOURCE_DIR}/src/Lox.cc
-  ${PROJECT_SOURCE_DIR}/src/LoxClass.cc
-  ${PROJECT_SOURCE_DIR}/src/LoxFunction.cc
-  ${PROJECT_SOURCE_DIR}/src/LoxInstance.cc
-  ${PROJECT_SOURCE_DIR}/src/Object.cc
-  ${PROJECT_SOURCE_DIR}/src/Parser.cc
-  ${PROJECT_SOURCE_DIR}/src/Resolver.cc
-  ${PROJECT_SOURCE_DIR}/src/RuntimeError.cc
-  ${PROJECT_SOURCE_DIR}/src/Scanner.cc
-  ${PROJECT_SOURCE_DIR}/src/Statements.cc
-  ${PROJECT_SOURCE_DIR}/src/Token.cc
-  ${PROJECT_SOURCE_DIR}/src/TokenType.cc)
-
 # Other CMake modules MUST BE ADDED AFTER CONFIGURING COMPILER PARAMETERS
 # ##############################################################################
 set(CMAKE_MODULE_PATH "${LOX_BUILD_SUPPORT_DIR}/cmake;${CMAKE_MODULE_PATH}")

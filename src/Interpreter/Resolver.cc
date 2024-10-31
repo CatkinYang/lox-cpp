@@ -1,9 +1,10 @@
-#include "Resolver.h"
-#include "Expression.h"
-#include "Lox.h"
-#include "Object.h"
-#include "Parser.h"
-#include "Statements.h"
+#include "Interpreter/Resolver.h"
+#include "Interpreter/Expression.h"
+#include "Interpreter/Lox.h"
+#include "Interpreter/Object.h"
+#include "Interpreter/Parser.h"
+#include "Interpreter/Statements.h"
+
 #include <string>
 #include <unordered_map>
 namespace lox {

@@ -1,9 +1,10 @@
-#include "include/Parser.h"
-#include "include/Expression.h"
-#include "include/Object.h"
-#include "include/Statements.h"
-#include "include/Token.h"
-#include "include/Tokentype.h"
+#include "Interpreter/Parser.h"
+#include "Interpreter/Expression.h"
+#include "Interpreter/Object.h"
+#include "Interpreter/Statements.h"
+#include "Interpreter/Token.h"
+#include "Interpreter/Tokentype.h"
+
 #include <memory>
 #include <stdexcept>
 #include <vector>

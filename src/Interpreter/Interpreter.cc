@@ -1,12 +1,12 @@
-#include "Interpreter.h"
-#include "Environment.h"
-#include "Lox.h"
-#include "LoxCallable.h"
-#include "LoxFunction.h"
-#include "LoxInstance.h"
-#include "Object.h"
-#include "Return.h"
-#include "RuntimeError.h"
+#include "Interpreter/Interpreter.h"
+#include "Interpreter/Environment.h"
+#include "Interpreter/Lox.h"
+#include "Interpreter/LoxCallable.h"
+#include "Interpreter/LoxFunction.h"
+#include "Interpreter/LoxInstance.h"
+#include "Interpreter/Object.h"
+#include "Interpreter/Return.h"
+#include "Interpreter/RuntimeError.h"
 
 #include <cstddef>
 #include <iostream>
